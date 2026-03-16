@@ -1,0 +1,333 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --red: #FF3B3B;
+  --red-dim: #cc2f2f;
+  --red-faint: rgba(255, 59, 59, 0.08);
+  --red-border: rgba(255, 59, 59, 0.18);
+  --char: #11131A;
+  --char2: #1a1d27;
+  --char3: #222636;
+  --char4: #2a2e3d;
+  --off: #F4F2EE;
+  --off2: #d8d5d0;
+  --muted: #9499AA;
+  --border: rgba(255, 255, 255, 0.07);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--char);
+  color: var(--off);
+  font-family: 'Space Grotesk', sans-serif;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 16px 52px;
+  background: rgba(17, 19, 26, 0.9);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--red-border);
+}
+
+.nav-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-self: end;
+}
+
+.nav-logo {
+  font-family: 'Syne', sans-serif;
+  font-size: 21px;
+  font-weight: 800;
+  color: var(--red);
+  letter-spacing: -0.5px;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav-links a {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color .2s;
+  position: relative;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--off);
+}
+
+.nav-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--red);
+}
+
+
+
+.btn-ghost {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 8px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all .2s;
+}
+
+.btn-ghost:hover {
+  color: var(--off);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn-red {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--char);
+  background: var(--red);
+  border: none;
+  padding: 8px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background .2s, transform .15s;
+}
+
+.btn-red:hover {
+  background: var(--red-dim);
+  transform: translateY(-1px);
+}
+
+/* ── LAYOUT FIXES FOR ASTRO ── */
+nav a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--red);
+}
+
+/* ── SECTION COMMON ── */
+.page-wrap {
+  padding-top: 80px;
+  min-height: 100vh;
+}
+
+.section-tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 14px;
+}
+
+.section-h {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(34px, 5vw, 58px);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  line-height: 1.0;
+}
+
+.section-sub {
+  font-size: 16px;
+  color: var(--muted);
+  max-width: 480px;
+  line-height: 1.7;
+  margin-top: 14px;
+}
+
+.grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 59, 59, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 59, 59, 0.035) 1px, transparent 1px);
+  background-size: 58px 58px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── BUTTONS ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--red);
+  color: var(--char);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 13px 28px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background .2s, transform .15s;
+}
+
+.btn-primary:hover {
+  background: var(--red-dim);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--off);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 13px 28px;
+  border: 1px solid rgba(244, 242, 238, 0.18);
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all .2s;
+}
+
+.btn-outline:hover {
+  border-color: var(--off);
+  transform: translateY(-2px);
+}
+
+/* ── FOOTER ── */
+footer {
+  padding: 28px 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--red-border);
+  background: var(--char);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--red);
+  text-decoration: none;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-links a {
+  font-size: 12px;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color .2s;
+  font-weight: 500;
+}
+
+.footer-links a:hover {
+  color: var(--off);
+}
+
+.footer-copy {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ── SOCIAL ICONS ── */
+.social-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 15px;
+  transition: all .2s;
+  background: var(--char2);
+}
+
+.social-btn:hover {
+  border-color: var(--red);
+  color: var(--red);
+  background: var(--red-faint);
+}
+
+.social-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+/* ── MOBILE ── */
+@media(max-width:768px) {
+  nav {
+    padding: 14px 20px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  footer {
+    padding: 20px;
+  }
+
+  .footer-links {
+    display: none;
+  }
+}

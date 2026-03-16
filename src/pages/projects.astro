@@ -1,0 +1,507 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="Projects — Siddhesh Lakhani" 
+  description="A showcase of projects and ideas brought to life by Siddhesh Lakhani."
+  activePage="projects"
+>
+  <div class="page-wrap">
+
+    <div class="proj-hero">
+      <div class="grid-bg"></div>
+      <div class="proj-hero-inner">
+        <div class="section-tag">My Work</div>
+        <h1 class="section-h">Projects &<br><span style="color:var(--red)">Builds.</span></h1>
+        <p class="section-sub">A showcase of the things I've built — from full-stack platforms and CLI tools to ML experiments and riced Linux configs.</p>
+      </div>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterCards('all',this)">All</button>
+      <button class="filter-btn" onclick="filterCards('fullstack',this)">Full-Stack</button>
+      <button class="filter-btn" onclick="filterCards('cli',this)">CLI / Systems</button>
+      <button class="filter-btn" onclick="filterCards('ml',this)">ML / CV</button>
+      <button class="filter-btn" onclick="filterCards('client',this)">Client Work</button>
+      <button class="filter-btn" onclick="filterCards('os',this)">Linux / OS</button>
+    </div>
+
+    <div class="masonry-wrap">
+      <div class="masonry" id="masonry">
+
+        <!-- VaultX — tall card -->
+        <div class="masonry-item" data-cat="fullstack">
+          <a class="proj-card" href="https://github.com/sid-lakhani/vaultx" target="_blank">
+            <div class="proj-card-img tall pat-security">
+              <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                <rect x="130" y="60" width="140" height="160" rx="10" fill="none" stroke="rgba(255,59,59,0.3)" stroke-width="1.5"/>
+                <rect x="155" y="85" width="90" height="12" rx="3" fill="rgba(255,59,59,0.15)"/>
+                <rect x="155" y="107" width="70" height="8" rx="3" fill="rgba(255,255,255,0.06)"/>
+                <rect x="155" y="125" width="90" height="8" rx="3" fill="rgba(255,255,255,0.04)"/>
+                <rect x="155" y="143" width="60" height="8" rx="3" fill="rgba(255,255,255,0.04)"/>
+                <circle cx="200" cy="185" r="18" fill="none" stroke="rgba(255,59,59,0.5)" stroke-width="2"/>
+                <path d="M193 185 L198 190 L208 180" stroke="rgba(255,59,59,0.8)" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <circle cx="200" cy="150" r="40" fill="none" stroke="rgba(255,59,59,0.05)" stroke-width="20"/>
+                <text x="200" y="250" text-anchor="middle" fill="rgba(255,255,255,0.15)" font-size="10" font-family="monospace">AES-256 · RBAC · Audit</text>
+              </svg>
+            </div>
+            <div class="proj-card-body">
+              <div class="proj-card-meta"><span class="proj-type">Full-Stack · Security</span><span class="proj-year">2024</span></div>
+              <h3 class="proj-card-title">VaultX</h3>
+              <p class="proj-card-desc">Full-stack encrypted cloud storage platform. Searchable files, tamper-proof audit logging, and role-based access control. All encryption handled internally — no external key managers, no third-party crypto.</p>
+              <div class="proj-tags">
+                <span class="proj-tag">FastAPI</span><span class="proj-tag">Next.js</span>
+                <span class="proj-tag">PostgreSQL</span><span class="proj-tag">Docker</span>
+              </div>
+              <div class="proj-links">
+                <span class="proj-link gh">GitHub ↗</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- pico -->
+        <div class="masonry-item" data-cat="cli">
+          <a class="proj-card" href="https://github.com/sid-lakhani/pico" target="_blank">
+            <div class="proj-card-img pat-cli">
+              <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+                <rect x="40" y="40" width="320" height="140" rx="6" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                <text x="60" y="68" fill="rgba(255,59,59,0.7)" font-size="11" font-family="monospace">$ pico</text>
+                <text x="60" y="88" fill="rgba(255,255,255,0.35)" font-size="10" font-family="monospace">Picked: #FF3B3B</text>
+                <text x="60" y="105" fill="rgba(255,255,255,0.2)" font-size="10" font-family="monospace">Copied to clipboard ✓</text>
+                <rect x="280" y="55" width="60" height="28" rx="4" fill="#FF3B3B"/>
+                <circle cx="310" cy="69" r="8" fill="rgba(255,255,255,0.2)"/>
+                <text x="60" y="145" fill="rgba(255,255,255,0.1)" font-size="9" font-family="monospace">AUR: pico-color-picker</text>
+              </svg>
+            </div>
+            <div class="proj-card-body">
+              <div class="proj-card-meta"><span class="proj-type">CLI · Systems</span><span class="proj-year">2024</span></div>
+              <h3 class="proj-card-title">pico — color picker</h3>
+              <p class="proj-card-desc">Minimal X11 color picker built in Rust. Click anywhere on screen to instantly pick a color, copy it to clipboard, and keep your workflow fast. Published as an AUR package.</p>
+              <div class="proj-tags">
+                <span class="proj-tag">Rust</span><span class="proj-tag">X11</span><span class="proj-tag">AUR</span><span class="proj-tag">Linux</span>
+              </div>
+              <div class="proj-links">
+                <span class="proj-link gh">GitHub ↗</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Urja N Sonpal -->
+        <div class="masonry-item" data-cat="client fullstack">
+          <a class="proj-card" href="#">
+            <div class="proj-card-img pat-web">
+              <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+                <rect x="40" y="30" width="320" height="160" rx="8" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                <rect x="40" y="30" width="320" height="28" rx="8" fill="rgba(255,255,255,0.03)"/>
+                <rect x="52" y="40" width="40" height="8" rx="2" fill="rgba(255,255,255,0.15)"/>
+                <rect x="280" y="40" width="20" height="8" rx="2" fill="rgba(255,59,59,0.4)"/>
+                <rect x="304" y="40" width="20" height="8" rx="2" fill="rgba(255,59,59,0.2)"/>
+                <rect x="60" y="75" width="120" height="100" rx="4" fill="rgba(255,255,255,0.04)"/>
+                <rect x="196" y="75" width="148" height="45" rx="4" fill="rgba(255,255,255,0.03)"/>
+                <rect x="196" y="128" width="148" height="47" rx="4" fill="rgba(255,255,255,0.02)"/>
+                <rect x="68" y="83" width="104" height="60" rx="3" fill="rgba(255,59,59,0.08)"/>
+                <text x="120" y="117" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-size="9" font-family="monospace">e-comm</text>
+              </svg>
+            </div>
+            <div class="proj-card-body">
+              <div class="proj-card-meta"><span class="proj-type">Client · E-Commerce</span><span class="proj-year">2024</span></div>
+              <h3 class="proj-card-title">Urja N Sonpal</h3>
+              <p class="proj-card-desc">E-Commerce website built for a brand — self-hosted on a VPS with Nginx and PocketBase as CMS. Built with Next.js, NodeJS, PostgreSQL for seamless content management and performance.</p>
+              <div class="proj-tags">
+                <span class="proj-tag">Next.js</span><span class="proj-tag">NodeJS</span>
+                <span class="proj-tag">PostgreSQL</span><span class="proj-tag">Nginx</span><span class="proj-tag">PocketBase</span>
+              </div>
+              <div class="proj-links">
+                <span class="proj-link live">Live ↗</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- FER -->
+        <div class="masonry-item" data-cat="ml">
+          <a class="proj-card" href="https://github.com/sid-lakhani/fer-ml" target="_blank">
+            <div class="proj-card-img square pat-ml">
+              <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="150" cy="130" r="70" fill="none" stroke="rgba(255,59,59,0.2)" stroke-width="1.5"/>
+                <circle cx="125" cy="115" r="8" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                <circle cx="175" cy="115" r="8" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                <path d="M130 150 Q150 168 170 150" stroke="rgba(255,59,59,0.7)" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <rect x="110" y="88" width="80" height="5" rx="2" fill="rgba(255,59,59,0.15)"/>
+                <rect x="118" y="98" width="65" height="3" rx="1" fill="rgba(255,59,59,0.08)"/>
+                <text x="150" y="235" text-anchor="middle" fill="rgba(255,255,255,0.15)" font-size="9" font-family="monospace">FER-2013 · CNN · OpenCV</text>
+                <circle cx="150" cy="130" r="88" fill="none" stroke="rgba(255,59,59,0.06)" stroke-width="1" stroke-dasharray="4 4"/>
+              </svg>
+            </div>
+            <div class="proj-card-body">
+              <div class="proj-card-meta"><span class="proj-type">ML · Computer Vision</span><span class="proj-year">2024</span></div>
+              <h3 class="proj-card-title">Facial Emotion Recognition</h3>
+              <p class="proj-card-desc">ML project detecting facial expressions using OpenCV, Haar cascades, and the FER-2013 dataset. Implements CNN classification for real-time emotion analysis.</p>
+              <div class="proj-tags">
+                <span class="proj-tag">Python</span><span class="proj-tag">OpenCV</span>
+                <span class="proj-tag">TensorFlow</span><span class="proj-tag">CNN</span>
+              </div>
+              <div class="proj-links">
+                <span class="proj-link gh">GitHub ↗</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- DWM Dots -->
+        <div class="masonry-item" data-cat="os cli">
+          <a class="proj-card" href="https://github.com/sid-lakhani/dwm-dots" target="_blank">
+            <div class="proj-card-img pat-os">
+              <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0" y="0" width="400" height="200" fill="#0a0f0a"/>
+                <rect x="0" y="0" width="400" height="18" fill="rgba(0,200,80,0.08)"/>
+                <text x="8" y="12" fill="rgba(0,200,80,0.6)" font-size="9" font-family="monospace">[1] [2] [3] [4] [5]</text>
+                <text x="380" y="12" text-anchor="end" fill="rgba(255,255,255,0.3)" font-size="9" font-family="monospace">10:42</text>
+                <rect x="4" y="22" width="188" height="170" rx="2" fill="rgba(255,255,255,0.02)" stroke="rgba(0,200,80,0.15)" stroke-width="1"/>
+                <rect x="196" y="22" width="200" height="170" rx="2" fill="rgba(255,255,255,0.01)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                <text x="12" y="38" fill="rgba(0,200,80,0.5)" font-size="8" font-family="monospace">$ nvim config.c</text>
+                <text x="12" y="52" fill="rgba(255,255,255,0.15)" font-size="7" font-family="monospace">void spawn(const Arg *arg)</text>
+                <text x="12" y="63" fill="rgba(255,59,59,0.3)" font-size="7" font-family="monospace">  if (fork() == 0) {</text>
+                <text x="200" y="38" fill="rgba(255,255,255,0.2)" font-size="8" font-family="monospace">$ htop</text>
+              </svg>
+            </div>
+            <div class="proj-card-body">
+              <div class="proj-card-meta"><span class="proj-type">Linux · Config</span><span class="proj-year">2024</span></div>
+              <h3 class="proj-card-title">DWM Dots</h3>
+              <p class="proj-card-desc">Minimal and customized configuration for a riced Arch Linux setup using the Dynamic Window Manager (DWM) and the Suckless toolset. Everything patched and compiled from source.</p>
+              <div class="proj-tags">
+                <span class="proj-tag">C</span><span class="proj-tag">DWM</span>
+                <span class="proj-tag">Arch Linux</span><span class="proj-tag">Suckless</span>
+              </div>
+              <div class="proj-links">
+                <span class="proj-link gh">GitHub ↗</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Label Jui Lakhani -->
+        <div class="masonry-item" data-cat="client fullstack">
+          <a class="proj-card" href="#">
+            <div class="proj-card-img pat-web">
+              <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+                <rect x="50" y="30" width="300" height="160" rx="6" fill="rgba(255,255,255,0.01)" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+                <rect x="50" y="30" width="300" height="50" rx="6" fill="rgba(255,255,255,0.03)"/>
+                <text x="200" y="62" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="11" font-family="serif" letter-spacing="3">LABEL JUI LAKHANI</text>
+                <rect x="68" y="95" width="78" height="82" rx="3" fill="rgba(255,255,255,0.03)"/>
+                <rect x="154" y="95" width="78" height="82" rx="3" fill="rgba(255,255,255,0.03)"/>
+                <rect x="240" y="95" width="78" height="82" rx="3" fill="rgba(255,255,255,0.03)"/>
+                <rect x="75" y="102" width="64" height="55" rx="2" fill="rgba(255,255,255,0.05)"/>
+                <rect x="161" y="102" width="64" height="55" rx="2" fill="rgba(255,255,255,0.05)"/>
+                <rect x="247" y="102" width="64" height="55" rx="2" fill="rgba(255,255,255,0.03)"/>
+              </svg>
+            </div>
+            <div class="proj-card-body">
+              <div class="proj-card-meta"><span class="proj-type">Client · Fashion</span><span class="proj-year">2024</span></div>
+              <h3 class="proj-card-title">Label Jui Lakhani</h3>
+              <p class="proj-card-desc">Luxury fashion brand showcase website built for a client, self-hosted on a VPS with Nginx and Strapi CMS. Built for seamless content management and optimized performance.</p>
+              <div class="proj-tags">
+                <span class="proj-tag">Next.js</span><span class="proj-tag">Strapi</span>
+                <span class="proj-tag">Nginx</span><span class="proj-tag">VPS</span>
+              </div>
+              <div class="proj-links">
+                <span class="proj-link live">Live ↗</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Auto Selfie -->
+        <div class="masonry-item" data-cat="ml">
+          <a class="proj-card" href="https://github.com/sid-lakhani/Auto-Selfie" target="_blank">
+            <div class="proj-card-img pat-ml">
+              <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="200" cy="100" r="60" fill="none" stroke="rgba(255,59,59,0.2)" stroke-width="1.5" stroke-dasharray="6 3"/>
+                <rect x="170" y="70" width="60" height="60" rx="30" fill="rgba(255,255,255,0.04)"/>
+                <circle cx="188" cy="92" r="5" fill="rgba(255,255,255,0.2)"/>
+                <circle cx="212" cy="92" r="5" fill="rgba(255,255,255,0.2)"/>
+                <path d="M188 110 Q200 122 212 110" stroke="rgba(255,59,59,0.6)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <text x="200" y="180" text-anchor="middle" fill="rgba(255,59,59,0.4)" font-size="9" font-family="monospace">SMILE DETECTED — SNAP!</text>
+                <circle cx="200" cy="100" r="75" fill="none" stroke="rgba(255,59,59,0.06)" stroke-width="8"/>
+              </svg>
+            </div>
+            <div class="proj-card-body">
+              <div class="proj-card-meta"><span class="proj-type">ML · Python</span><span class="proj-year">2024</span></div>
+              <h3 class="proj-card-title">Auto-Selfie</h3>
+              <p class="proj-card-desc">AI-powered tool that automatically captures selfies when it detects a smile using computer vision. Hands-free, real-time photo capture based on facial emotion recognition.</p>
+              <div class="proj-tags">
+                <span class="proj-tag">Python</span><span class="proj-tag">OpenCV</span><span class="proj-tag">Haar Cascades</span>
+              </div>
+              <div class="proj-links">
+                <span class="proj-link gh">GitHub ↗</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- StockWise -->
+        <div class="masonry-item" data-cat="fullstack">
+          <a class="proj-card" href="#">
+            <div class="proj-card-img pat-web">
+              <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                <polyline points="40,160 80,140 120,150 160,110 200,120 240,80 280,90 320,50 360,70" fill="none" stroke="rgba(255,59,59,0.6)" stroke-width="2"/>
+                <polyline points="40,160 80,140 120,150 160,110 200,120 240,80 280,90 320,50 360,70 360,180 40,180" fill="rgba(255,59,59,0.05)"/>
+                <line x1="40" y1="180" x2="360" y2="180" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                <line x1="40" y1="130" x2="360" y2="130" stroke="rgba(255,255,255,0.04)" stroke-width="1" stroke-dasharray="4 4"/>
+                <line x1="40" y1="80" x2="360" y2="80" stroke="rgba(255,255,255,0.04)" stroke-width="1" stroke-dasharray="4 4"/>
+                <circle cx="320" cy="50" r="4" fill="#FF3B3B"/>
+                <text x="325" y="45" fill="rgba(255,255,255,0.4)" font-size="8" font-family="monospace">+12.4%</text>
+              </svg>
+            </div>
+            <div class="proj-card-body">
+              <div class="proj-card-meta"><span class="proj-type">Full-Stack · Finance</span><span class="proj-year">2024</span></div>
+              <h3 class="proj-card-title">StockWise</h3>
+              <p class="proj-card-desc">Stock market dashboard showcasing UI/UX design for portfolio management and trading. Built with Next.js — a design-focused project demonstrating complex financial interfaces.</p>
+              <div class="proj-tags">
+                <span class="proj-tag">Next.js</span><span class="proj-tag">TypeScript</span><span class="proj-tag">Recharts</span>
+              </div>
+              <div class="proj-links">
+                <span class="proj-link gh">GitHub ↗</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Open Source / GitHub repos -->
+    <div class="oss-strip">
+      <div class="section-tag">Open Source</div>
+      <h2 class="section-h" style="margin-bottom:4px;">On GitHub.</h2>
+      <p class="section-sub">26 public repos and counting. Here are the pinned ones.</p>
+      <div class="oss-grid">
+        <a href="https://github.com/sid-lakhani/Auto-Selfie" target="_blank" class="oss-card">
+          <div class="oss-name">Auto-Selfie</div>
+          <div class="oss-desc">AI smile detection that auto-captures selfies using Haar cascades.</div>
+          <div class="oss-meta">
+            <span class="oss-lang"><span class="lang-dot" style="background:#3572A5"></span>Python</span>
+            <span class="oss-stars">★ 3</span>
+          </div>
+        </a>
+        <a href="https://github.com/sid-lakhani/dwm-dots" target="_blank" class="oss-card">
+          <div class="oss-name">dwm-dots</div>
+          <div class="oss-desc">My DWM config — patched, riced, suckless.</div>
+          <div class="oss-meta">
+            <span class="oss-lang"><span class="lang-dot" style="background:#555555"></span>C</span>
+            <span class="oss-stars">★ 1</span>
+          </div>
+        </a>
+        <a href="https://github.com/sid-lakhani/fer-ml" target="_blank" class="oss-card">
+          <div class="oss-name">fer-ml</div>
+          <div class="oss-desc">CNN-based facial expression recognition on FER-2013.</div>
+          <div class="oss-meta">
+            <span class="oss-lang"><span class="lang-dot" style="background:#3572A5"></span>Python</span>
+            <span class="oss-stars">★ 1</span>
+          </div>
+        </a>
+        <a href="https://github.com/sid-lakhani/vaultx" target="_blank" class="oss-card">
+          <div class="oss-name">vaultx</div>
+          <div class="oss-desc">Encrypted cloud storage with RBAC and tamper-proof logging.</div>
+          <div class="oss-meta">
+            <span class="oss-lang"><span class="lang-dot" style="background:#3178c6"></span>TypeScript</span>
+            <span class="oss-stars">★ 1</span>
+          </div>
+        </a>
+        <a href="https://github.com/sid-lakhani/pico" target="_blank" class="oss-card">
+          <div class="oss-name">pico</div>
+          <div class="oss-desc">Minimal X11 color picker CLI. Fast, clean, AUR-published.</div>
+          <div class="oss-meta">
+            <span class="oss-lang"><span class="lang-dot" style="background:#dea584"></span>Rust</span>
+            <span class="oss-stars">★ 2</span>
+          </div>
+        </a>
+        <a href="https://github.com/sid-lakhani/portfolio-v2" target="_blank" class="oss-card">
+          <div class="oss-name">portfolio-v2</div>
+          <div class="oss-desc">My web space — Next.js portfolio, open sourced.</div>
+          <div class="oss-meta">
+            <span class="oss-lang"><span class="lang-dot" style="background:#3178c6"></span>TypeScript</span>
+            <span class="oss-stars">★ 1</span>
+          </div>
+        </a>
+      </div>
+      <div style="margin-top:24px;text-align:center;">
+        <a href="https://github.com/sid-lakhani" target="_blank" class="btn-outline">All Repos on GitHub ↗</a>
+      </div>
+    </div>
+
+  </div>
+</BaseLayout>
+
+<style>
+/* PROJECTS PAGE */
+.proj-hero{
+  padding:120px 52px 60px;
+  position:relative;overflow:hidden;
+}
+.proj-hero .grid-bg{opacity:.5;}
+.proj-hero-inner{position:relative;z-index:2;}
+.proj-hero-inner .section-h{margin-top:12px;max-width:600px;}
+.proj-hero-inner .section-sub{max-width:520px;}
+
+/* FILTER PILLS */
+.filter-bar{
+  padding:0 52px 48px;
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+}
+.filter-btn{
+  font-size:11px;font-weight:700;letter-spacing:0.08em;
+  text-transform:uppercase;
+  background:var(--char2);color:var(--muted);
+  border:1px solid var(--border);
+  padding:7px 16px;border-radius:999px;cursor:pointer;
+  transition:all .2s;
+}
+.filter-btn:hover,.filter-btn.active{
+  background:var(--red-faint);color:var(--red);
+  border-color:var(--red-border);
+}
+
+/* MASONRY LAYOUT */
+.masonry-wrap{padding:0 52px 96px;}
+.masonry{
+  columns:3;column-gap:16px;
+}
+.masonry-item{
+  break-inside:avoid;
+  margin-bottom:16px;
+  display:block;
+}
+.proj-card{
+  background:var(--char2);
+  border:1px solid var(--border);
+  border-radius:12px;overflow:hidden;
+  transition:border-color .25s,transform .25s;
+  cursor:pointer;position:relative;
+  text-decoration:none;color:inherit;
+  display:block;
+}
+.proj-card:hover{
+  border-color:var(--red-border);
+  transform:translateY(-4px);
+}
+/* Color accent bar per category */
+.proj-card::before{
+  content:'';height:2px;display:block;
+  background:var(--accent-color,var(--red));
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .3s;
+}
+.proj-card:hover::before{transform:scaleX(1);}
+
+.proj-card-img{
+  width:100%;aspect-ratio:16/9;
+  background:var(--char3);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;position:relative;
+  font-size:48px;
+}
+.proj-card-img.tall{aspect-ratio:4/3;}
+.proj-card-img.square{aspect-ratio:1/1;}
+/* SVG placeholder illustrations */
+.proj-card-img svg{width:100%;height:100%;position:absolute;inset:0;}
+
+.proj-card-body{padding:22px 22px 26px;}
+.proj-card-meta{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:10px;
+}
+.proj-type{
+  font-size:10px;font-weight:700;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--muted);
+}
+.proj-year{font-size:10px;color:var(--muted);font-weight:500;}
+.proj-card-title{
+  font-family:'Syne',sans-serif;
+  font-size:18px;font-weight:700;line-height:1.2;margin-bottom:10px;
+}
+.proj-card-desc{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:16px;}
+.proj-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;}
+.proj-tag{
+  font-size:10px;font-weight:700;letter-spacing:0.04em;
+  color:var(--red);background:rgba(255,59,59,0.08);
+  padding:3px 9px;border-radius:3px;
+  border:1px solid rgba(255,59,59,0.15);
+}
+.proj-links{display:flex;gap:10px;}
+.proj-link{
+  font-size:11px;font-weight:700;letter-spacing:0.06em;
+  text-decoration:none;
+  padding:6px 14px;border-radius:5px;
+  transition:all .2s;
+}
+.proj-link.gh{
+  color:var(--muted);
+  border:1px solid var(--border);
+  background:var(--char3);
+}
+.proj-link.gh:hover{color:var(--off);border-color:rgba(255,255,255,0.2);}
+.proj-link.live{
+  color:var(--char);
+  background:var(--red);border:1px solid var(--red);
+}
+.proj-link.live:hover{background:var(--red-dim);}
+
+/* PATTERNS */
+.pat-web{background:linear-gradient(135deg,var(--char3) 0%,#1e2130 100%);}
+.pat-cli{background:linear-gradient(135deg,#0d1117 0%,#1a1d27 100%);}
+.pat-ml{background:linear-gradient(135deg,#1a1020 0%,#2a1428 100%);}
+.pat-os{background:linear-gradient(135deg,#0a0f0a 0%,#111a11 100%);}
+.pat-security{background:linear-gradient(135deg,#0f0a14 0%,#1a1020 100%);}
+
+/* OPEN SOURCE STRIP */
+.oss-strip{
+  padding:0 52px 96px;
+}
+.oss-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:12px;margin-top:40px;
+}
+.oss-card{
+  background:var(--char2);border:1px solid var(--border);
+  border-radius:10px;padding:20px 22px;
+  text-decoration:none;color:inherit;
+  transition:border-color .2s,transform .2s;display:block;
+}
+.oss-card:hover{border-color:var(--red-border);transform:translateY(-2px);}
+.oss-name{font-size:14px;font-weight:700;color:var(--off);margin-bottom:6px;}
+.oss-desc{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:12px;}
+.oss-meta{display:flex;gap:12px;align-items:center;}
+.oss-lang{
+  font-size:10px;font-weight:700;color:var(--muted);
+  display:flex;align-items:center;gap:5px;
+}
+.lang-dot{width:8px;height:8px;border-radius:50%;}
+.oss-stars{font-size:10px;color:var(--muted);}
+
+@media(max-width:1100px){.masonry{columns:2;}}
+@media(max-width:700px){
+  .masonry{columns:1;}
+  .masonry-wrap,.filter-bar,.proj-hero,.oss-strip{padding-left:20px;padding-right:20px;}
+  .oss-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:500px){.oss-grid{grid-template-columns:1fr;}}
+</style>
+
+<script is:inline>
+window.filterCards = function(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.masonry-item').forEach(item => {
+    const cats = item.dataset.cat || '';
+    if (cat === 'all' || cats.includes(cat)) {
+      item.style.display = 'block';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
+</script>
