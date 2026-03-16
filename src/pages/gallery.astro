@@ -22,46 +22,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </Fragment>
 
     <div class="page-wrap">
-        <!-- HERO -->
-        <div class="gal-hero">
-            <div class="grid-bg"></div>
-            <div class="gal-hero-inner">
-                <div class="section-tag">Visual Journal</div>
-                <h1 class="section-h" style="margin-top:12px;">
-                    The world<br />through my<br /><span
-                        style="color:var(--red)">lens.</span
-                    >
-                </h1>
-                <div class="gal-intro">
-                    <blockquote class="gal-intro-quote">
-                        <em>Code is just one way I make things.</em> Here's everything
-                        else — the city I come from, the screens I stare at, the games
-                        I play at 2am, and the quiet hours between commits.
-                    </blockquote>
-                    <p class="gal-intro-text">
-                        Born and raised in Mumbai. I think in systems but feel
-                        in visuals. This is the unfiltered side of the same mind
-                        that architects databases and writes Rust — dark
-                        aesthetics, neon reflections, late nights, and the kind
-                        of stillness you only find when everyone else is asleep.
-                        Drop in your own photos where the SVG placeholders are —
-                        this layout is built for your shots.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- CHAPTER 1: Mumbai / City -->
-        <div class="chapter" id="city">
-            <div class="chapter-header">
-                <span class="chapter-num">01</span>
-                <h2 class="chapter-title">Mumbai After Dark</h2>
-                <p class="chapter-desc">
-                    The city that never shuts down. Lights bleeding through
-                    rain, traffic that feels like a heartbeat.
-                </p>
-            </div>
-            <div class="gal-grid" id="grid-city">
+        <!-- GALLERY GRIDS -->
+        <div class="gal-grid" id="grid-city">
                 <div
                     class="gal-item"
                     tabindex="0"
@@ -284,23 +246,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             </div>
         </div>
 
-        <div class="gal-divider">
-            <div class="gal-divider-line"></div><span class="gal-divider-text"
-                >Chapter II</span
-            ><div class="gal-divider-line"></div>
-        </div>
-
-        <!-- CHAPTER 2: Setup / Tech -->
-        <div class="chapter" id="setup">
-            <div class="chapter-header">
-                <span class="chapter-num">02</span>
-                <h2 class="chapter-title">The Setup</h2>
-                <p class="chapter-desc">
-                    DWM. Arch. st terminal. Every pixel tuned. This is where the
-                    actual work happens.
-                </p>
-            </div>
-            <div class="gal-grid">
+        <div class="gal-grid" id="grid-setup">
                 <div
                     class="gal-item"
                     tabindex="0"
@@ -430,23 +376,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             </div>
         </div>
 
-        <div class="gal-divider">
-            <div class="gal-divider-line"></div><span class="gal-divider-text"
-                >Chapter III</span
-            ><div class="gal-divider-line"></div>
-        </div>
-
-        <!-- CHAPTER 3: Moods / Textures -->
-        <div class="chapter" id="moods">
-            <div class="chapter-header">
-                <span class="chapter-num">03</span>
-                <h2 class="chapter-title">Moods &amp; Textures</h2>
-                <p class="chapter-desc">
-                    The in-between frames. Coffee, sky, light hitting something
-                    wrong.
-                </p>
-            </div>
-            <div class="gal-grid">
+        <div class="gal-grid" id="grid-moods">
                 <div
                     class="gal-item"
                     tabindex="0"
@@ -565,246 +495,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                 </div>
             </div>
         </div>
-
-        <!-- HORIZONTAL FILM STRIP -->
-        <div class="gal-divider">
-            <div class="gal-divider-line"></div><span class="gal-divider-text"
-                >Film Roll</span
-            ><div class="gal-divider-line"></div>
-        </div>
-
-        <div
-            class="filmstrip"
-            aria-label="Scrolling filmstrip of additional photos"
-            role="region"
-        >
-            <div class="filmstrip-inner">
-                {/* Strip items — mapping is handled in script */}
-                <div class="film-item">
-                    <svg
-                        viewBox="0 0 220 160"
-                        preserveAspectRatio="xMidYMid slice"
-                        ><rect width="220" height="160" fill="#0c0906"
-                        ></rect><ellipse
-                            cx="110"
-                            cy="80"
-                            rx="55"
-                            ry="55"
-                            fill="#070503"></ellipse></svg
-                    >
-                </div>
-                <div class="film-item">
-                    <svg
-                        viewBox="0 0 220 160"
-                        preserveAspectRatio="xMidYMid slice"
-                        ><rect width="220" height="160" fill="#060810"
-                        ></rect><rect
-                            x="0"
-                            y="100"
-                            width="220"
-                            height="60"
-                            fill="#080a12"></rect></svg
-                    >
-                </div>
-                <div class="film-item">
-                    <svg
-                        viewBox="0 0 220 160"
-                        preserveAspectRatio="xMidYMid slice"
-                        ><rect width="220" height="160" fill="#050609"
-                        ></rect><rect
-                            x="10"
-                            y="20"
-                            width="130"
-                            height="90"
-                            rx="4"
-                            fill="#080a10"></rect></svg
-                    >
-                </div>
-                <div class="film-item">
-                    <svg
-                        viewBox="0 0 220 160"
-                        preserveAspectRatio="xMidYMid slice"
-                        ><rect width="220" height="160" fill="#040406"
-                        ></rect><ellipse
-                            cx="110"
-                            cy="110"
-                            rx="90"
-                            ry="50"
-                            fill="rgba(255,59,59,0.04)"></ellipse></svg
-                    >
-                </div>
-                <div class="film-item">
-                    <svg
-                        viewBox="0 0 220 160"
-                        preserveAspectRatio="xMidYMid slice"
-                        ><rect width="220" height="160" fill="#05060d"
-                        ></rect><circle
-                            cx="55"
-                            cy="80"
-                            r="35"
-                            fill="rgba(255,200,80,0.06)"></circle></svg
-                    >
-                </div>
-                <div class="film-item">
-                    <svg
-                        viewBox="0 0 220 160"
-                        preserveAspectRatio="xMidYMid slice"
-                        ><rect width="220" height="160" fill="#080a10"
-                        ></rect><ellipse
-                            cx="110"
-                            cy="40"
-                            rx="160"
-                            ry="60"
-                            fill="#0c0e16"></ellipse></svg
-                    >
-                </div>
-                <div class="film-item">
-                    <svg
-                        viewBox="0 0 220 160"
-                        preserveAspectRatio="xMidYMid slice"
-                        ><rect width="220" height="160" fill="#060406"
-                        ></rect><rect
-                            x="20"
-                            y="35"
-                            width="180"
-                            height="90"
-                            rx="8"
-                            fill="#0e0c12"></rect></svg
-                    >
-                </div>
-                <div class="film-item">
-                    <svg
-                        viewBox="0 0 220 160"
-                        preserveAspectRatio="xMidYMid slice"
-                        ><rect width="220" height="160" fill="#0f0a06"
-                        ></rect><circle
-                            cx="110"
-                            cy="60"
-                            r="30"
-                            fill="rgba(255,140,30,0.1)"></circle></svg
-                    >
-                </div>
-                {/* duplicates for loop */}
-                <div class="film-item">
-                    <svg
-                        viewBox="0 0 220 160"
-                        preserveAspectRatio="xMidYMid slice"
-                        ><rect width="220" height="160" fill="#0c0906"
-                        ></rect><ellipse
-                            cx="110"
-                            cy="80"
-                            rx="55"
-                            ry="55"
-                            fill="#070503"></ellipse></svg
-                    >
-                </div>
-                <div class="film-item">
-                    <svg
-                        viewBox="0 0 220 160"
-                        preserveAspectRatio="xMidYMid slice"
-                        ><rect width="220" height="160" fill="#060810"
-                        ></rect><rect
-                            x="0"
-                            y="100"
-                            width="220"
-                            height="60"
-                            fill="#080a12"></rect></svg
-                    >
-                </div>
-                <div class="film-item">
-                    <svg
-                        viewBox="0 0 220 160"
-                        preserveAspectRatio="xMidYMid slice"
-                        ><rect width="220" height="160" fill="#050609"
-                        ></rect><rect
-                            x="10"
-                            y="20"
-                            width="130"
-                            height="90"
-                            rx="4"
-                            fill="#080a10"></rect></svg
-                    >
-                </div>
-                <div class="film-item">
-                    <svg
-                        viewBox="0 0 220 160"
-                        preserveAspectRatio="xMidYMid slice"
-                        ><rect width="220" height="160" fill="#040406"
-                        ></rect><ellipse
-                            cx="110"
-                            cy="110"
-                            rx="90"
-                            ry="50"
-                            fill="rgba(255,59,59,0.04)"></ellipse></svg
-                    >
-                </div>
-                <div class="film-item">
-                    <svg
-                        viewBox="0 0 220 160"
-                        preserveAspectRatio="xMidYMid slice"
-                        ><rect width="220" height="160" fill="#05060d"
-                        ></rect><circle
-                            cx="55"
-                            cy="80"
-                            r="35"
-                            fill="rgba(255,200,80,0.06)"></circle></svg
-                    >
-                </div>
-                <div class="film-item">
-                    <svg
-                        viewBox="0 0 220 160"
-                        preserveAspectRatio="xMidYMid slice"
-                        ><rect width="220" height="160" fill="#080a10"
-                        ></rect><ellipse
-                            cx="110"
-                            cy="40"
-                            rx="160"
-                            ry="60"
-                            fill="#0c0e16"></ellipse></svg
-                    >
-                </div>
-                <div class="film-item">
-                    <svg
-                        viewBox="0 0 220 160"
-                        preserveAspectRatio="xMidYMid slice"
-                        ><rect width="220" height="160" fill="#060406"
-                        ></rect><rect
-                            x="20"
-                            y="35"
-                            width="180"
-                            height="90"
-                            rx="8"
-                            fill="#0e0c12"></rect></svg
-                    >
-                </div>
-            </div>
-        </div>
-
-        <!-- END CTA -->
-        <div class="gal-end">
-            <div class="gal-end-glow"></div>
-            <div
-                class="section-tag"
-                style="display:inline-block;margin-bottom:20px;"
-            >
-                That's the feed
-            </div>
-            <h2>Swap in your<br /><span>own shots.</span></h2>
-            <p>
-                These are SVG placeholders built to match the aesthetic. Replace
-                them with your actual photos — the layout stays. Drop real
-                images from your camera roll where each SVG lives.
-            </p>
-            <div class="gal-end-btns">
-                <a
-                    href="https://instagram.com/sidlakhani_"
-                    target="_blank"
-                    class="btn-primary">Instagram ↗</a
-                >
-                <a href="/contact" class="btn-outline">Work With Me</a>
-                <a href="/" class="btn-outline">Back to Home</a>
-            </div>
-        </div>
     </div>
 
     <!-- LIGHTBOX -->
@@ -911,6 +601,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     .gal-grid {
         columns: 3;
         column-gap: 6px;
+        padding: 0 52px;
+    }
+    .gal-grid:first-of-type {
+        padding-top: 64px;
     }
     .gal-item {
         break-inside: avoid;
@@ -919,8 +613,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         overflow: hidden;
         border-radius: 4px;
         cursor: pointer;
-        display: block;
-        background: var(--char2);
+            display: block;
+            background: rgba(26, 29, 39, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
     }
     .gal-item:hover .gal-img {
         transform: scale(1.03);
@@ -1077,10 +773,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         height: 160px;
         flex-shrink: 0;
         border-radius: 4px;
-        overflow: hidden;
-        background: var(--char2);
-        cursor: pointer;
-        position: relative;
+            overflow: hidden;
+            background: rgba(26, 29, 39, 0.65);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            cursor: pointer;
+            position: relative;
     }
     .film-item svg {
         width: 100%;

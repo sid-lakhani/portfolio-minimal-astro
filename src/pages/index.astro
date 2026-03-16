@@ -331,39 +331,35 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
   <!-- PROCESS -->
   <div class="process-strip">
-    <div class="section-tag">03 — How I Work</div>
-    <h2 class="section-h">The Process.</h2>
+    <div class="section-tag">03 — THE STACK REALITY</div>
+    <h2 class="section-h">How I actually ship.</h2>
     <div class="process-grid">
       <div class="proc-item">
         <div class="proc-step">01</div>
-        <div class="proc-title">Understand the problem</div>
+        <div class="proc-title">Schema before syntax</div>
         <div class="proc-desc">
-          Before touching code — what are we actually building, why does it
-          exist, and who uses it?
+          I design the database first. Every table, every relation, every index — before a single API route exists. Bad schemas are expensive to fix at 2am.
         </div>
       </div>
       <div class="proc-item">
         <div class="proc-step">02</div>
-        <div class="proc-title">Architecture first</div>
+        <div class="proc-title">Self-host by default</div>
         <div class="proc-desc">
-          DB schema, API contracts, deployment shape — decisions made upfront
-          save weeks later.
+          If it runs on my VPS, I understand it. Nginx, Docker, Postgres, Cloudflare — I don't use managed services I can't SSH into.
         </div>
       </div>
       <div class="proc-item">
         <div class="proc-step">03</div>
-        <div class="proc-title">Ship and iterate</div>
+        <div class="proc-title">Rust when it matters</div>
         <div class="proc-desc">
-          Working software in front of real users fast. Optimize when you have
-          data, not assumptions.
+          pico is a published AUR package written in Rust. I reach for it when I need something small, fast, and impossible to corrupt.
         </div>
       </div>
       <div class="proc-item">
         <div class="proc-step">04</div>
-        <div class="proc-title">Own the stack</div>
+        <div class="proc-title">Ship, then rice</div>
         <div class="proc-desc">
-          Self-host where it makes sense. Understand every layer. No mystery
-          dependencies in prod.
+          Get it working, get it deployed, then obsess over the details. DWM took months of patching. My git history shows the real order.
         </div>
       </div>
     </div>
@@ -1124,7 +1120,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     font-weight: 700;
     letter-spacing: 0.05em;
     color: var(--off2);
-    background: var(--char3);
+    background: rgba(34, 38, 54, 0.55);
     border: 1px solid rgba(255, 255, 255, 0.07);
     padding: 5px 12px;
     border-radius: 5px;
@@ -1220,7 +1216,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     padding: 16px 0;
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
-    background: var(--char2);
+    background: rgba(26, 29, 39, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
   }
   .ticker {
     display: flex;
@@ -1301,7 +1299,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
   /* terminal inline */
   .mini-terminal {
-    background: var(--char3);
+    background: rgba(34, 38, 54, 0.55);
     border: 1px solid var(--border);
     border-radius: 10px;
     overflow: hidden;
@@ -1367,7 +1365,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     gap: 2px;
   }
   .wcard {
-    background: var(--char2);
+    background: rgba(26, 29, 39, 0.65);
     padding: 36px 32px 40px;
     position: relative;
     overflow: hidden;
@@ -1377,9 +1375,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     display: block;
     transition: background 0.2s;
     border: 1px solid rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
   .wcard:hover {
-    background: var(--char3);
+    background: rgba(34, 38, 54, 0.75);
   }
   .wcard::after {
     content: "";
@@ -1398,10 +1398,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   }
   .wcard.featured {
     grid-row: span 2;
-    background: var(--char2);
+    background: rgba(26, 29, 39, 0.65);
   }
   .wcard.featured:hover {
-    background: var(--char3);
+    background: rgba(34, 38, 54, 0.75);
   }
   .wcard-num {
     font-size: 10px;
@@ -1461,7 +1461,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
   /* ── PROCESS STRIP ── */
   .process-strip {
-    background: var(--char2);
+    background: rgba(26, 29, 39, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
     padding: 80px 52px;
@@ -1528,7 +1530,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     align-items: flex-start;
     gap: 16px;
     padding: 20px 22px;
-    background: var(--char2);
+    background: rgba(26, 29, 39, 0.65);
     border: 1px solid var(--border);
     border-radius: 8px;
     transition: border-color 0.2s;
@@ -1580,7 +1582,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     aspect-ratio: 1/1;
     overflow: hidden;
     border-radius: 6px;
-    background: var(--char3);
+    background: rgba(34, 38, 54, 0.55);
     position: relative;
     cursor: pointer;
     text-decoration: none;
@@ -1615,7 +1617,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   /* ── CTA BANNER ── */
   .cta-banner {
     margin: 0 52px 100px;
-    background: var(--char2);
+    background: rgba(26, 29, 39, 0.6);
     border: 1px solid var(--red-border);
     border-radius: 16px;
     padding: 64px 56px;
