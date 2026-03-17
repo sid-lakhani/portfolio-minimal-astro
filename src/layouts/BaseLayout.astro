@@ -1,5 +1,20 @@
 ---
-const { title, description, activePage } = Astro.props;
+const { title, description, activePage } = Astro.props as {
+  title: string;
+  description: string;
+  activePage?: 'home' | 'about' | 'projects' | 'contact';
+};
+
+const siteUrl = Astro.site ?? new URL('https://sidlakhani.in');
+const pagePathMap = {
+  home: '/',
+  about: '/about',
+  projects: '/projects',
+  contact: '/contact',
+};
+const canonicalPath = pagePathMap[activePage ?? 'home'];
+const canonicalUrl = new URL(canonicalPath, siteUrl).toString();
+const socialImageUrl = new URL('/wallpaper.jpg', siteUrl).toString();
 ---
 
 <!doctype html>
@@ -9,6 +24,27 @@ const { title, description, activePage } = Astro.props;
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="author" content="Siddhesh Lakhani" />
+    <meta name="theme-color" content="#11131A" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="format-detection" content="telephone=no, address=no, email=no" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="alternate" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+    <meta property="og:site_name" content="Siddhesh Lakhani" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={socialImageUrl} />
+    <meta property="og:image:alt" content="Siddhesh Lakhani portfolio preview" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageUrl} />
     <slot name="head" />
     <link rel="stylesheet" href="/src/styles/global.css" />
   </head>
@@ -22,9 +58,6 @@ const { title, description, activePage } = Astro.props;
         >
         <a href="/projects" class={activePage === "projects" ? "active" : ""}
           >Projects</a
-        >
-        <a href="/gallery" class={activePage === "gallery" ? "active" : ""}
-          >Gallery</a
         >
         <a href="/contact" class={activePage === "contact" ? "active" : ""}
           >Contact</a
@@ -78,7 +111,7 @@ const { title, description, activePage } = Astro.props;
         <a href="/" class="footer-logo">SL.</a>
         <div class="footer-links">
           <a href="/">Home</a><a href="/about">About</a>
-          <a href="/projects">Projects</a><a href="/gallery">Gallery</a>
+          <a href="/projects">Projects</a>
           <a href="/contact">Contact</a>
           <a href="/Resume.pdf" target="_blank">Resume</a>
         </div>

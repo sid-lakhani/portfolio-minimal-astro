@@ -1,5 +1,23 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { mediaUrl } from '../lib/media';
+
+const allProjects = await getCollection('projects');
+const projects = allProjects.sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
+
+const categoryMeta = {
+  fullstack: { label: 'Full-Stack', pattern: 'pat-security' },
+  cli: { label: 'CLI / Systems', pattern: 'pat-cli' },
+  ml: { label: 'ML / CV', pattern: 'pat-ml' },
+  client: { label: 'Client Work', pattern: 'pat-web' },
+  os: { label: 'Linux / OS', pattern: 'pat-os' },
+} as const;
+
+const imageShapeClass = {
+  vaultx: 'tall',
+  'fer-ml': 'square',
+} as const;
 ---
 
 <BaseLayout 
@@ -29,246 +47,42 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     <div class="masonry-wrap">
       <div class="masonry" id="masonry">
+        {projects.map((project) => {
+          const meta = categoryMeta[project.data.category];
+          const shapeClass = imageShapeClass[project.data.slug as keyof typeof imageShapeClass] ?? '';
+          const href = project.data.live ?? project.data.github ?? '#';
+          const hasExternalLink = Boolean(project.data.live ?? project.data.github);
 
-        <!-- VaultX — tall card -->
-        <div class="masonry-item" data-cat="fullstack">
-          <a class="proj-card" href="https://github.com/sid-lakhani/vaultx" target="_blank">
-            <div class="proj-card-img tall pat-security">
-              <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-                <rect x="130" y="60" width="140" height="160" rx="10" fill="none" stroke="rgba(255,59,59,0.3)" stroke-width="1.5"/>
-                <rect x="155" y="85" width="90" height="12" rx="3" fill="rgba(255,59,59,0.15)"/>
-                <rect x="155" y="107" width="70" height="8" rx="3" fill="rgba(255,255,255,0.06)"/>
-                <rect x="155" y="125" width="90" height="8" rx="3" fill="rgba(255,255,255,0.04)"/>
-                <rect x="155" y="143" width="60" height="8" rx="3" fill="rgba(255,255,255,0.04)"/>
-                <circle cx="200" cy="185" r="18" fill="none" stroke="rgba(255,59,59,0.5)" stroke-width="2"/>
-                <path d="M193 185 L198 190 L208 180" stroke="rgba(255,59,59,0.8)" stroke-width="2" fill="none" stroke-linecap="round"/>
-                <circle cx="200" cy="150" r="40" fill="none" stroke="rgba(255,59,59,0.05)" stroke-width="20"/>
-                <text x="200" y="250" text-anchor="middle" fill="rgba(255,255,255,0.15)" font-size="10" font-family="monospace">AES-256 · RBAC · Audit</text>
-              </svg>
+          return (
+            <div class="masonry-item" data-cat={project.data.category}>
+              <a class="proj-card" href={href} target={hasExternalLink ? '_blank' : undefined} rel={hasExternalLink ? 'noreferrer' : undefined}>
+                <div class={`proj-card-img ${shapeClass} ${meta.pattern}`.trim()}>
+                  {project.data.cover && (
+                    <img
+                      src={mediaUrl(project.data.cover)}
+                      alt={project.data.title}
+                      loading="lazy"
+                      style="width: 100%; height: 100%; object-fit: cover; display: block;"
+                      onerror="this.remove()"
+                    />
+                  )}
+                </div>
+                <div class="proj-card-body">
+                  <div class="proj-card-meta"><span class="proj-type">{meta.label}{project.data.featured ? ' · Featured' : ''}</span><span class="proj-year">{project.data.year}</span></div>
+                  <h3 class="proj-card-title">{project.data.title}</h3>
+                  <p class="proj-card-desc">{project.data.description}</p>
+                  <div class="proj-tags">
+                    {project.data.tags.map((tag) => <span class="proj-tag">{tag}</span>)}
+                  </div>
+                  <div class="proj-links">
+                    {project.data.github && <span class="proj-link gh">GitHub ↗</span>}
+                    {project.data.live && <span class="proj-link live">Live ↗</span>}
+                  </div>
+                </div>
+              </a>
             </div>
-            <div class="proj-card-body">
-              <div class="proj-card-meta"><span class="proj-type">Full-Stack · Security</span><span class="proj-year">2024</span></div>
-              <h3 class="proj-card-title">VaultX</h3>
-              <p class="proj-card-desc">Full-stack encrypted cloud storage platform. Searchable files, tamper-proof audit logging, and role-based access control. All encryption handled internally — no external key managers, no third-party crypto.</p>
-              <div class="proj-tags">
-                <span class="proj-tag">FastAPI</span><span class="proj-tag">Next.js</span>
-                <span class="proj-tag">PostgreSQL</span><span class="proj-tag">Docker</span>
-              </div>
-              <div class="proj-links">
-                <span class="proj-link gh">GitHub ↗</span>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <!-- pico -->
-        <div class="masonry-item" data-cat="cli">
-          <a class="proj-card" href="https://github.com/sid-lakhani/pico" target="_blank">
-            <div class="proj-card-img pat-cli">
-              <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
-                <rect x="40" y="40" width="320" height="140" rx="6" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-                <text x="60" y="68" fill="rgba(255,59,59,0.7)" font-size="11" font-family="monospace">$ pico</text>
-                <text x="60" y="88" fill="rgba(255,255,255,0.35)" font-size="10" font-family="monospace">Picked: #FF3B3B</text>
-                <text x="60" y="105" fill="rgba(255,255,255,0.2)" font-size="10" font-family="monospace">Copied to clipboard ✓</text>
-                <rect x="280" y="55" width="60" height="28" rx="4" fill="#FF3B3B"/>
-                <circle cx="310" cy="69" r="8" fill="rgba(255,255,255,0.2)"/>
-                <text x="60" y="145" fill="rgba(255,255,255,0.1)" font-size="9" font-family="monospace">AUR: pico-color-picker</text>
-              </svg>
-            </div>
-            <div class="proj-card-body">
-              <div class="proj-card-meta"><span class="proj-type">CLI · Systems</span><span class="proj-year">2024</span></div>
-              <h3 class="proj-card-title">pico — color picker</h3>
-              <p class="proj-card-desc">Minimal X11 color picker built in Rust. Click anywhere on screen to instantly pick a color, copy it to clipboard, and keep your workflow fast. Published as an AUR package.</p>
-              <div class="proj-tags">
-                <span class="proj-tag">Rust</span><span class="proj-tag">X11</span><span class="proj-tag">AUR</span><span class="proj-tag">Linux</span>
-              </div>
-              <div class="proj-links">
-                <span class="proj-link gh">GitHub ↗</span>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Urja N Sonpal -->
-        <div class="masonry-item" data-cat="client fullstack">
-          <a class="proj-card" href="#">
-            <div class="proj-card-img pat-web">
-              <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
-                <rect x="40" y="30" width="320" height="160" rx="8" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-                <rect x="40" y="30" width="320" height="28" rx="8" fill="rgba(255,255,255,0.03)"/>
-                <rect x="52" y="40" width="40" height="8" rx="2" fill="rgba(255,255,255,0.15)"/>
-                <rect x="280" y="40" width="20" height="8" rx="2" fill="rgba(255,59,59,0.4)"/>
-                <rect x="304" y="40" width="20" height="8" rx="2" fill="rgba(255,59,59,0.2)"/>
-                <rect x="60" y="75" width="120" height="100" rx="4" fill="rgba(255,255,255,0.04)"/>
-                <rect x="196" y="75" width="148" height="45" rx="4" fill="rgba(255,255,255,0.03)"/>
-                <rect x="196" y="128" width="148" height="47" rx="4" fill="rgba(255,255,255,0.02)"/>
-                <rect x="68" y="83" width="104" height="60" rx="3" fill="rgba(255,59,59,0.08)"/>
-                <text x="120" y="117" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-size="9" font-family="monospace">e-comm</text>
-              </svg>
-            </div>
-            <div class="proj-card-body">
-              <div class="proj-card-meta"><span class="proj-type">Client · E-Commerce</span><span class="proj-year">2024</span></div>
-              <h3 class="proj-card-title">Urja N Sonpal</h3>
-              <p class="proj-card-desc">E-Commerce website built for a brand — self-hosted on a VPS with Nginx and PocketBase as CMS. Built with Next.js, NodeJS, PostgreSQL for seamless content management and performance.</p>
-              <div class="proj-tags">
-                <span class="proj-tag">Next.js</span><span class="proj-tag">NodeJS</span>
-                <span class="proj-tag">PostgreSQL</span><span class="proj-tag">Nginx</span><span class="proj-tag">PocketBase</span>
-              </div>
-              <div class="proj-links">
-                <span class="proj-link live">Live ↗</span>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <!-- FER -->
-        <div class="masonry-item" data-cat="ml">
-          <a class="proj-card" href="https://github.com/sid-lakhani/fer-ml" target="_blank">
-            <div class="proj-card-img square pat-ml">
-              <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="150" cy="130" r="70" fill="none" stroke="rgba(255,59,59,0.2)" stroke-width="1.5"/>
-                <circle cx="125" cy="115" r="8" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
-                <circle cx="175" cy="115" r="8" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
-                <path d="M130 150 Q150 168 170 150" stroke="rgba(255,59,59,0.7)" stroke-width="2" fill="none" stroke-linecap="round"/>
-                <rect x="110" y="88" width="80" height="5" rx="2" fill="rgba(255,59,59,0.15)"/>
-                <rect x="118" y="98" width="65" height="3" rx="1" fill="rgba(255,59,59,0.08)"/>
-                <text x="150" y="235" text-anchor="middle" fill="rgba(255,255,255,0.15)" font-size="9" font-family="monospace">FER-2013 · CNN · OpenCV</text>
-                <circle cx="150" cy="130" r="88" fill="none" stroke="rgba(255,59,59,0.06)" stroke-width="1" stroke-dasharray="4 4"/>
-              </svg>
-            </div>
-            <div class="proj-card-body">
-              <div class="proj-card-meta"><span class="proj-type">ML · Computer Vision</span><span class="proj-year">2024</span></div>
-              <h3 class="proj-card-title">Facial Emotion Recognition</h3>
-              <p class="proj-card-desc">ML project detecting facial expressions using OpenCV, Haar cascades, and the FER-2013 dataset. Implements CNN classification for real-time emotion analysis.</p>
-              <div class="proj-tags">
-                <span class="proj-tag">Python</span><span class="proj-tag">OpenCV</span>
-                <span class="proj-tag">TensorFlow</span><span class="proj-tag">CNN</span>
-              </div>
-              <div class="proj-links">
-                <span class="proj-link gh">GitHub ↗</span>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <!-- DWM Dots -->
-        <div class="masonry-item" data-cat="os cli">
-          <a class="proj-card" href="https://github.com/sid-lakhani/dwm-dots" target="_blank">
-            <div class="proj-card-img pat-os">
-              <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
-                <rect x="0" y="0" width="400" height="200" fill="#0a0f0a"/>
-                <rect x="0" y="0" width="400" height="18" fill="rgba(0,200,80,0.08)"/>
-                <text x="8" y="12" fill="rgba(0,200,80,0.6)" font-size="9" font-family="monospace">[1] [2] [3] [4] [5]</text>
-                <text x="380" y="12" text-anchor="end" fill="rgba(255,255,255,0.3)" font-size="9" font-family="monospace">10:42</text>
-                <rect x="4" y="22" width="188" height="170" rx="2" fill="rgba(255,255,255,0.02)" stroke="rgba(0,200,80,0.15)" stroke-width="1"/>
-                <rect x="196" y="22" width="200" height="170" rx="2" fill="rgba(255,255,255,0.01)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-                <text x="12" y="38" fill="rgba(0,200,80,0.5)" font-size="8" font-family="monospace">$ nvim config.c</text>
-                <text x="12" y="52" fill="rgba(255,255,255,0.15)" font-size="7" font-family="monospace">void spawn(const Arg *arg)</text>
-                <text x="12" y="63" fill="rgba(255,59,59,0.3)" font-size="7" font-family="monospace">  if (fork() == 0) {</text>
-                <text x="200" y="38" fill="rgba(255,255,255,0.2)" font-size="8" font-family="monospace">$ htop</text>
-              </svg>
-            </div>
-            <div class="proj-card-body">
-              <div class="proj-card-meta"><span class="proj-type">Linux · Config</span><span class="proj-year">2024</span></div>
-              <h3 class="proj-card-title">DWM Dots</h3>
-              <p class="proj-card-desc">Minimal and customized configuration for a riced Arch Linux setup using the Dynamic Window Manager (DWM) and the Suckless toolset. Everything patched and compiled from source.</p>
-              <div class="proj-tags">
-                <span class="proj-tag">C</span><span class="proj-tag">DWM</span>
-                <span class="proj-tag">Arch Linux</span><span class="proj-tag">Suckless</span>
-              </div>
-              <div class="proj-links">
-                <span class="proj-link gh">GitHub ↗</span>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Label Jui Lakhani -->
-        <div class="masonry-item" data-cat="client fullstack">
-          <a class="proj-card" href="#">
-            <div class="proj-card-img pat-web">
-              <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
-                <rect x="50" y="30" width="300" height="160" rx="6" fill="rgba(255,255,255,0.01)" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-                <rect x="50" y="30" width="300" height="50" rx="6" fill="rgba(255,255,255,0.03)"/>
-                <text x="200" y="62" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="11" font-family="serif" letter-spacing="3">LABEL JUI LAKHANI</text>
-                <rect x="68" y="95" width="78" height="82" rx="3" fill="rgba(255,255,255,0.03)"/>
-                <rect x="154" y="95" width="78" height="82" rx="3" fill="rgba(255,255,255,0.03)"/>
-                <rect x="240" y="95" width="78" height="82" rx="3" fill="rgba(255,255,255,0.03)"/>
-                <rect x="75" y="102" width="64" height="55" rx="2" fill="rgba(255,255,255,0.05)"/>
-                <rect x="161" y="102" width="64" height="55" rx="2" fill="rgba(255,255,255,0.05)"/>
-                <rect x="247" y="102" width="64" height="55" rx="2" fill="rgba(255,255,255,0.03)"/>
-              </svg>
-            </div>
-            <div class="proj-card-body">
-              <div class="proj-card-meta"><span class="proj-type">Client · Fashion</span><span class="proj-year">2024</span></div>
-              <h3 class="proj-card-title">Label Jui Lakhani</h3>
-              <p class="proj-card-desc">Luxury fashion brand showcase website built for a client, self-hosted on a VPS with Nginx and Strapi CMS. Built for seamless content management and optimized performance.</p>
-              <div class="proj-tags">
-                <span class="proj-tag">Next.js</span><span class="proj-tag">Strapi</span>
-                <span class="proj-tag">Nginx</span><span class="proj-tag">VPS</span>
-              </div>
-              <div class="proj-links">
-                <span class="proj-link live">Live ↗</span>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Auto Selfie -->
-        <div class="masonry-item" data-cat="ml">
-          <a class="proj-card" href="https://github.com/sid-lakhani/Auto-Selfie" target="_blank">
-            <div class="proj-card-img pat-ml">
-              <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="200" cy="100" r="60" fill="none" stroke="rgba(255,59,59,0.2)" stroke-width="1.5" stroke-dasharray="6 3"/>
-                <rect x="170" y="70" width="60" height="60" rx="30" fill="rgba(255,255,255,0.04)"/>
-                <circle cx="188" cy="92" r="5" fill="rgba(255,255,255,0.2)"/>
-                <circle cx="212" cy="92" r="5" fill="rgba(255,255,255,0.2)"/>
-                <path d="M188 110 Q200 122 212 110" stroke="rgba(255,59,59,0.6)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-                <text x="200" y="180" text-anchor="middle" fill="rgba(255,59,59,0.4)" font-size="9" font-family="monospace">SMILE DETECTED — SNAP!</text>
-                <circle cx="200" cy="100" r="75" fill="none" stroke="rgba(255,59,59,0.06)" stroke-width="8"/>
-              </svg>
-            </div>
-            <div class="proj-card-body">
-              <div class="proj-card-meta"><span class="proj-type">ML · Python</span><span class="proj-year">2024</span></div>
-              <h3 class="proj-card-title">Auto-Selfie</h3>
-              <p class="proj-card-desc">AI-powered tool that automatically captures selfies when it detects a smile using computer vision. Hands-free, real-time photo capture based on facial emotion recognition.</p>
-              <div class="proj-tags">
-                <span class="proj-tag">Python</span><span class="proj-tag">OpenCV</span><span class="proj-tag">Haar Cascades</span>
-              </div>
-              <div class="proj-links">
-                <span class="proj-link gh">GitHub ↗</span>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <!-- StockWise -->
-        <div class="masonry-item" data-cat="fullstack">
-          <a class="proj-card" href="#">
-            <div class="proj-card-img pat-web">
-              <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
-                <polyline points="40,160 80,140 120,150 160,110 200,120 240,80 280,90 320,50 360,70" fill="none" stroke="rgba(255,59,59,0.6)" stroke-width="2"/>
-                <polyline points="40,160 80,140 120,150 160,110 200,120 240,80 280,90 320,50 360,70 360,180 40,180" fill="rgba(255,59,59,0.05)"/>
-                <line x1="40" y1="180" x2="360" y2="180" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-                <line x1="40" y1="130" x2="360" y2="130" stroke="rgba(255,255,255,0.04)" stroke-width="1" stroke-dasharray="4 4"/>
-                <line x1="40" y1="80" x2="360" y2="80" stroke="rgba(255,255,255,0.04)" stroke-width="1" stroke-dasharray="4 4"/>
-                <circle cx="320" cy="50" r="4" fill="#FF3B3B"/>
-                <text x="325" y="45" fill="rgba(255,255,255,0.4)" font-size="8" font-family="monospace">+12.4%</text>
-              </svg>
-            </div>
-            <div class="proj-card-body">
-              <div class="proj-card-meta"><span class="proj-type">Full-Stack · Finance</span><span class="proj-year">2024</span></div>
-              <h3 class="proj-card-title">StockWise</h3>
-              <p class="proj-card-desc">Stock market dashboard showcasing UI/UX design for portfolio management and trading. Built with Next.js — a design-focused project demonstrating complex financial interfaces.</p>
-              <div class="proj-tags">
-                <span class="proj-tag">Next.js</span><span class="proj-tag">TypeScript</span><span class="proj-tag">Recharts</span>
-              </div>
-              <div class="proj-links">
-                <span class="proj-link gh">GitHub ↗</span>
-              </div>
-            </div>
-          </a>
-        </div>
+          );
+        })}
 
       </div>
     </div>
