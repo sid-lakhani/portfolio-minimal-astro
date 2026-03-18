@@ -2,11 +2,12 @@
 title: VaultX
 slug: vaultx
 category: fullstack
-year: 2024
+year: 2025
 featured: true
 tags: [FastAPI, Next.js, PostgreSQL, Docker]
 github: https://github.com/sid-lakhani/vaultx
 cover: projects/vaultx.png
+ratio: tall
 description: Full-stack encrypted cloud storage with searchable files, tamper-proof audit logs, and RBAC. No external key managers, no third-party crypto.
 order: 1
 ---

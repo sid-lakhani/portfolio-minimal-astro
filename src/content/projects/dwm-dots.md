@@ -2,7 +2,7 @@
 title: DWM Dots
 slug: dwm-dots
 category: os
-year: 2024
+year: 2025
 featured: false
 tags: [C, DWM, Arch Linux, Suckless]
 github: https://github.com/sid-lakhani/dwm-dots

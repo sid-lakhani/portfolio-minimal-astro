@@ -46,7 +46,7 @@ body::before {
   pointer-events: none;
 }
 
-body > * {
+body>* {
   position: relative;
   z-index: 1;
 }

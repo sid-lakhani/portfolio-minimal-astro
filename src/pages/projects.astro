@@ -1,89 +1,128 @@
 ---
-import { getCollection } from 'astro:content';
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { mediaUrl } from '../lib/media';
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { mediaUrl } from "../lib/media";
 
-const allProjects = await getCollection('projects');
-const projects = allProjects.sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
+const allProjects = await getCollection("projects");
+const projects = allProjects.sort(
+  (a, b) => (a.data.order ?? 99) - (b.data.order ?? 99),
+);
 
 const categoryMeta = {
-  fullstack: { label: 'Full-Stack', pattern: 'pat-security' },
-  cli: { label: 'CLI / Systems', pattern: 'pat-cli' },
-  ml: { label: 'ML / CV', pattern: 'pat-ml' },
-  client: { label: 'Client Work', pattern: 'pat-web' },
-  os: { label: 'Linux / OS', pattern: 'pat-os' },
+  fullstack: { label: "Full-Stack", pattern: "pat-security" },
+  cli: { label: "CLI / Systems", pattern: "pat-cli" },
+  ml: { label: "ML / CV", pattern: "pat-ml" },
+  client: { label: "Client Work", pattern: "pat-web" },
+  os: { label: "Linux / OS", pattern: "pat-os" },
 } as const;
 
-const imageShapeClass = {
-  vaultx: 'tall',
-  'fer-ml': 'square',
-} as const;
+// Ratio class mapping removed - now handled via frontmatter
 ---
 
-<BaseLayout 
-  title="Projects — Siddhesh Lakhani" 
+<BaseLayout
+  title="Projects — Siddhesh Lakhani"
   description="A showcase of projects and ideas brought to life by Siddhesh Lakhani."
   activePage="projects"
 >
   <div class="page-wrap">
-
     <div class="proj-hero">
       <div class="grid-bg"></div>
       <div class="proj-hero-inner">
         <div class="section-tag">My Work</div>
-        <h1 class="section-h">Projects &<br><span style="color:var(--red)">Builds.</span></h1>
-        <p class="section-sub">A showcase of the things I've built — from full-stack platforms and CLI tools to ML experiments and riced Linux configs.</p>
+        <h1 class="section-h">
+          Projects &<br /><span style="color:var(--red)">Builds.</span>
+        </h1>
+        <p class="section-sub">
+          A showcase of the things I've built — from full-stack platforms and
+          CLI tools to ML experiments and riced Linux configs.
+        </p>
       </div>
     </div>
 
     <div class="filter-bar">
-      <button class="filter-btn active" onclick="filterCards('all',this)">All</button>
-      <button class="filter-btn" onclick="filterCards('fullstack',this)">Full-Stack</button>
-      <button class="filter-btn" onclick="filterCards('cli',this)">CLI / Systems</button>
-      <button class="filter-btn" onclick="filterCards('ml',this)">ML / CV</button>
-      <button class="filter-btn" onclick="filterCards('client',this)">Client Work</button>
-      <button class="filter-btn" onclick="filterCards('os',this)">Linux / OS</button>
+      <button class="filter-btn active" onclick="filterCards('all',this)"
+        >All</button
+      >
+      <button class="filter-btn" onclick="filterCards('fullstack',this)"
+        >Full-Stack</button
+      >
+      <button class="filter-btn" onclick="filterCards('cli',this)"
+        >CLI / Systems</button
+      >
+      <button class="filter-btn" onclick="filterCards('ml',this)"
+        >ML / CV</button
+      >
+      <button class="filter-btn" onclick="filterCards('client',this)"
+        >Client Work</button
+      >
+      <button class="filter-btn" onclick="filterCards('os',this)"
+        >Linux / OS</button
+      >
     </div>
 
     <div class="masonry-wrap">
       <div class="masonry" id="masonry">
-        {projects.map((project) => {
-          const meta = categoryMeta[project.data.category];
-          const shapeClass = imageShapeClass[project.data.slug as keyof typeof imageShapeClass] ?? '';
-          const href = project.data.live ?? project.data.github ?? '#';
-          const hasExternalLink = Boolean(project.data.live ?? project.data.github);
+        {
+          projects.map((project) => {
+            const meta = categoryMeta[project.data.category];
+            const shapeClass = project.data.ratio ?? "";
+            const href = project.data.live ?? project.data.github ?? "#";
+            const hasExternalLink = Boolean(
+              project.data.live ?? project.data.github,
+            );
 
-          return (
-            <div class="masonry-item" data-cat={project.data.category}>
-              <a class="proj-card" href={href} target={hasExternalLink ? '_blank' : undefined} rel={hasExternalLink ? 'noreferrer' : undefined}>
-                <div class={`proj-card-img ${shapeClass} ${meta.pattern}`.trim()}>
+            return (
+              <div class="masonry-item" data-cat={project.data.category}>
+                <a
+                  class="proj-card"
+                  href={href}
+                  target={hasExternalLink ? "_blank" : undefined}
+                  rel={hasExternalLink ? "noreferrer" : undefined}
+                >
                   {project.data.cover && (
-                    <img
-                      src={mediaUrl(project.data.cover)}
-                      alt={project.data.title}
-                      loading="lazy"
-                      style="width: 100%; height: 100%; object-fit: cover; display: block;"
-                      onerror="this.remove()"
-                    />
+                    <div
+                      class={`proj-card-img ${shapeClass} ${meta.pattern}`.trim()}
+                    >
+                      <img
+                        src={mediaUrl(project.data.cover)}
+                        alt={project.data.title}
+                        loading="lazy"
+                        style="width: 100%; height: 100%; object-fit: cover; display: block;"
+                        onerror="this.remove()"
+                      />
+                    </div>
                   )}
-                </div>
-                <div class="proj-card-body">
-                  <div class="proj-card-meta"><span class="proj-type">{meta.label}{project.data.featured ? ' · Featured' : ''}</span><span class="proj-year">{project.data.year}</span></div>
-                  <h3 class="proj-card-title">{project.data.title}</h3>
-                  <p class="proj-card-desc">{project.data.description}</p>
-                  <div class="proj-tags">
-                    {project.data.tags.map((tag) => <span class="proj-tag">{tag}</span>)}
+                  <div class="proj-card-body">
+                    <div class="proj-card-meta">
+                      <>
+                        <span class="proj-type">
+                          {meta.label}
+                          {project.data.featured ? " · Featured" : ""}
+                        </span>
+                        <span class="proj-year">{project.data.year}</span>
+                      </>
+                    </div>
+                    <h3 class="proj-card-title">{project.data.title}</h3>
+                    <p class="proj-card-desc">{project.data.description}</p>
+                    <div class="proj-tags">
+                      {project.data.tags.map((tag) => (
+                        <span class="proj-tag">{tag}</span>
+                      ))}
+                    </div>
+                    <div class="proj-links">
+                      {project.data.github && (
+                        <span class="proj-link gh">GitHub ↗</span>
+                      )}
+                      {project.data.live && (
+                        <span class="proj-link live">Live ↗</span>
+                      )}
+                    </div>
                   </div>
-                  <div class="proj-links">
-                    {project.data.github && <span class="proj-link gh">GitHub ↗</span>}
-                    {project.data.live && <span class="proj-link live">Live ↗</span>}
-                  </div>
-                </div>
-              </a>
-            </div>
-          );
-        })}
-
+                </a>
+              </div>
+            );
+          })
+        }
       </div>
     </div>
 
@@ -91,231 +130,440 @@ const imageShapeClass = {
     <div class="oss-strip">
       <div class="section-tag">Open Source</div>
       <h2 class="section-h" style="margin-bottom:4px;">On GitHub.</h2>
-      <p class="section-sub">26 public repos and counting. Here are the pinned ones.</p>
+      <p class="section-sub">
+        26 public repos and counting. Here are the pinned ones.
+      </p>
       <div class="oss-grid">
-        <a href="https://github.com/sid-lakhani/Auto-Selfie" target="_blank" class="oss-card">
+        <a
+          href="https://github.com/sid-lakhani/Auto-Selfie"
+          target="_blank"
+          class="oss-card"
+        >
           <div class="oss-name">Auto-Selfie</div>
-          <div class="oss-desc">AI smile detection that auto-captures selfies using Haar cascades.</div>
+          <div class="oss-desc">
+            AI smile detection that auto-captures selfies using Haar cascades.
+          </div>
           <div class="oss-meta">
-            <span class="oss-lang"><span class="lang-dot" style="background:#3572A5"></span>Python</span>
+            <span class="oss-lang"
+              ><span class="lang-dot" style="background:#3572A5"
+              ></span>Python</span
+            >
             <span class="oss-stars">★ 3</span>
           </div>
         </a>
-        <a href="https://github.com/sid-lakhani/dwm-dots" target="_blank" class="oss-card">
+        <a
+          href="https://github.com/sid-lakhani/dwm-dots"
+          target="_blank"
+          class="oss-card"
+        >
           <div class="oss-name">dwm-dots</div>
           <div class="oss-desc">My DWM config — patched, riced, suckless.</div>
           <div class="oss-meta">
-            <span class="oss-lang"><span class="lang-dot" style="background:#555555"></span>C</span>
+            <span class="oss-lang"
+              ><span class="lang-dot" style="background:#555555"></span>C</span
+            >
             <span class="oss-stars">★ 1</span>
           </div>
         </a>
-        <a href="https://github.com/sid-lakhani/fer-ml" target="_blank" class="oss-card">
+        <a
+          href="https://github.com/sid-lakhani/fer-ml"
+          target="_blank"
+          class="oss-card"
+        >
           <div class="oss-name">fer-ml</div>
-          <div class="oss-desc">CNN-based facial expression recognition on FER-2013.</div>
+          <div class="oss-desc">
+            CNN-based facial expression recognition on FER-2013.
+          </div>
           <div class="oss-meta">
-            <span class="oss-lang"><span class="lang-dot" style="background:#3572A5"></span>Python</span>
+            <span class="oss-lang"
+              ><span class="lang-dot" style="background:#3572A5"
+              ></span>Python</span
+            >
             <span class="oss-stars">★ 1</span>
           </div>
         </a>
-        <a href="https://github.com/sid-lakhani/vaultx" target="_blank" class="oss-card">
+        <a
+          href="https://github.com/sid-lakhani/vaultx"
+          target="_blank"
+          class="oss-card"
+        >
           <div class="oss-name">vaultx</div>
-          <div class="oss-desc">Encrypted cloud storage with RBAC and tamper-proof logging.</div>
+          <div class="oss-desc">
+            Encrypted cloud storage with RBAC and tamper-proof logging.
+          </div>
           <div class="oss-meta">
-            <span class="oss-lang"><span class="lang-dot" style="background:#3178c6"></span>TypeScript</span>
+            <span class="oss-lang"
+              ><span class="lang-dot" style="background:#3178c6"
+              ></span>TypeScript</span
+            >
             <span class="oss-stars">★ 1</span>
           </div>
         </a>
-        <a href="https://github.com/sid-lakhani/pico" target="_blank" class="oss-card">
+        <a
+          href="https://github.com/sid-lakhani/pico"
+          target="_blank"
+          class="oss-card"
+        >
           <div class="oss-name">pico</div>
-          <div class="oss-desc">Minimal X11 color picker CLI. Fast, clean, AUR-published.</div>
+          <div class="oss-desc">
+            Minimal X11 color picker CLI. Fast, clean, AUR-published.
+          </div>
           <div class="oss-meta">
-            <span class="oss-lang"><span class="lang-dot" style="background:#dea584"></span>Rust</span>
+            <span class="oss-lang"
+              ><span class="lang-dot" style="background:#dea584"
+              ></span>Rust</span
+            >
             <span class="oss-stars">★ 2</span>
           </div>
         </a>
-        <a href="https://github.com/sid-lakhani/portfolio-v2" target="_blank" class="oss-card">
+        <a
+          href="https://github.com/sid-lakhani/portfolio-v2"
+          target="_blank"
+          class="oss-card"
+        >
           <div class="oss-name">portfolio-v2</div>
-          <div class="oss-desc">My web space — Next.js portfolio, open sourced.</div>
+          <div class="oss-desc">
+            My web space — Next.js portfolio, open sourced.
+          </div>
           <div class="oss-meta">
-            <span class="oss-lang"><span class="lang-dot" style="background:#3178c6"></span>TypeScript</span>
+            <span class="oss-lang"
+              ><span class="lang-dot" style="background:#3178c6"
+              ></span>TypeScript</span
+            >
             <span class="oss-stars">★ 1</span>
           </div>
         </a>
       </div>
       <div style="margin-top:24px;text-align:center;">
-        <a href="https://github.com/sid-lakhani" target="_blank" class="btn-outline">All Repos on GitHub ↗</a>
+        <a
+          href="https://github.com/sid-lakhani"
+          target="_blank"
+          class="btn-outline">All Repos on GitHub ↗</a
+        >
       </div>
     </div>
-
   </div>
 </BaseLayout>
 
 <style>
-/* PROJECTS PAGE */
-.proj-hero{
-  padding:120px 52px 60px;
-  position:relative;overflow:hidden;
-}
-.proj-hero .grid-bg{opacity:.5;}
-.proj-hero-inner{position:relative;z-index:2;}
-.proj-hero-inner .section-h{margin-top:12px;max-width:600px;}
-.proj-hero-inner .section-sub{max-width:520px;}
+  /* PROJECTS PAGE */
+  .proj-hero {
+    padding: 120px 52px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .proj-hero .grid-bg {
+    opacity: 0.5;
+  }
+  .proj-hero-inner {
+    position: relative;
+    z-index: 2;
+  }
+  .proj-hero-inner .section-h {
+    margin-top: 12px;
+    max-width: 600px;
+  }
+  .proj-hero-inner .section-sub {
+    max-width: 520px;
+  }
 
-/* FILTER PILLS */
-.filter-bar{
-  padding:0 52px 48px;
-  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
-}
-.filter-btn{
-  font-size:11px;font-weight:700;letter-spacing:0.08em;
-  text-transform:uppercase;
-  background:var(--char2);color:var(--muted);
-  border:1px solid var(--border);
-  padding:7px 16px;border-radius:999px;cursor:pointer;
-  transition:all .2s;
-}
-.filter-btn:hover,.filter-btn.active{
-  background:var(--red-faint);color:var(--red);
-  border-color:var(--red-border);
-}
+  /* FILTER PILLS */
+  .filter-bar {
+    padding: 0 52px 48px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .filter-btn {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--char2);
+    color: var(--muted);
+    border: 1px solid var(--border);
+    padding: 7px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .filter-btn:hover,
+  .filter-btn.active {
+    background: var(--red-faint);
+    color: var(--red);
+    border-color: var(--red-border);
+  }
 
-/* MASONRY LAYOUT */
-.masonry-wrap{padding:0 52px 96px;}
-.masonry{
-  columns:3;column-gap:16px;
-}
-.masonry-item{
-  break-inside:avoid;
-  margin-bottom:16px;
-  display:block;
-}
-.proj-card{
-  background:var(--char2);
-  border:1px solid var(--border);
-  border-radius:12px;overflow:hidden;
-  transition:border-color .25s,transform .25s;
-  cursor:pointer;position:relative;
-  text-decoration:none;color:inherit;
-  display:block;
-}
-.proj-card:hover{
-  border-color:var(--red-border);
-  transform:translateY(-4px);
-}
-/* Color accent bar per category */
-.proj-card::before{
-  content:'';height:2px;display:block;
-  background:var(--accent-color,var(--red));
-  transform:scaleX(0);transform-origin:left;
-  transition:transform .3s;
-}
-.proj-card:hover::before{transform:scaleX(1);}
+  /* MASONRY LAYOUT */
+  .masonry-wrap {
+    padding: 0 52px 96px;
+  }
+  .masonry {
+    columns: 3;
+    column-gap: 16px;
+  }
+  .masonry-item {
+    break-inside: avoid;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .proj-card {
+    background: var(--char2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition:
+      border-color 0.25s,
+      transform 0.25s;
+    cursor: pointer;
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .proj-card:hover {
+    border-color: var(--red-border);
+    transform: translateY(-4px);
+  }
+  /* Color accent bar per category */
+  .proj-card::before {
+    content: "";
+    height: 2px;
+    display: block;
+    background: var(--accent-color, var(--red));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .proj-card:hover::before {
+    transform: scaleX(1);
+  }
 
-.proj-card-img{
-  width:100%;aspect-ratio:16/9;
-  background:var(--char3);
-  display:flex;align-items:center;justify-content:center;
-  overflow:hidden;position:relative;
-  font-size:48px;
-}
-.proj-card-img.tall{aspect-ratio:4/3;}
-.proj-card-img.square{aspect-ratio:1/1;}
-/* SVG placeholder illustrations */
-.proj-card-img svg{width:100%;height:100%;position:absolute;inset:0;}
+  .proj-card-img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: var(--char3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    font-size: 48px;
+  }
+  .proj-card-img.tall {
+    aspect-ratio: 4/3;
+  }
+  .proj-card-img.square {
+    aspect-ratio: 1/1;
+  }
+  /* SVG placeholder illustrations */
+  .proj-card-img svg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+  }
 
-.proj-card-body{padding:22px 22px 26px;}
-.proj-card-meta{
-  display:flex;align-items:center;justify-content:space-between;
-  margin-bottom:10px;
-}
-.proj-type{
-  font-size:10px;font-weight:700;letter-spacing:0.1em;
-  text-transform:uppercase;color:var(--muted);
-}
-.proj-year{font-size:10px;color:var(--muted);font-weight:500;}
-.proj-card-title{
-  font-family:'Syne',sans-serif;
-  font-size:18px;font-weight:700;line-height:1.2;margin-bottom:10px;
-}
-.proj-card-desc{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:16px;}
-.proj-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;}
-.proj-tag{
-  font-size:10px;font-weight:700;letter-spacing:0.04em;
-  color:var(--red);background:rgba(255,59,59,0.08);
-  padding:3px 9px;border-radius:3px;
-  border:1px solid rgba(255,59,59,0.15);
-}
-.proj-links{display:flex;gap:10px;}
-.proj-link{
-  font-size:11px;font-weight:700;letter-spacing:0.06em;
-  text-decoration:none;
-  padding:6px 14px;border-radius:5px;
-  transition:all .2s;
-}
-.proj-link.gh{
-  color:var(--muted);
-  border:1px solid var(--border);
-  background:var(--char3);
-}
-.proj-link.gh:hover{color:var(--off);border-color:rgba(255,255,255,0.2);}
-.proj-link.live{
-  color:var(--char);
-  background:var(--red);border:1px solid var(--red);
-}
-.proj-link.live:hover{background:var(--red-dim);}
+  .proj-card-body {
+    padding: 22px 22px 26px;
+  }
+  .proj-card-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .proj-type {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .proj-year {
+    font-size: 10px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .proj-card-title {
+    font-family: "Syne", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .proj-card-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+  .proj-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+  .proj-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--red);
+    background: rgba(255, 59, 59, 0.08);
+    padding: 3px 9px;
+    border-radius: 3px;
+    border: 1px solid rgba(255, 59, 59, 0.15);
+  }
+  .proj-links {
+    display: flex;
+    gap: 10px;
+  }
+  .proj-link {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 5px;
+    transition: all 0.2s;
+  }
+  .proj-link.gh {
+    color: var(--muted);
+    border: 1px solid var(--border);
+    background: var(--char3);
+  }
+  .proj-link.gh:hover {
+    color: var(--off);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  .proj-link.live {
+    color: var(--char);
+    background: var(--red);
+    border: 1px solid var(--red);
+  }
+  .proj-link.live:hover {
+    background: var(--red-dim);
+  }
 
-/* PATTERNS */
-.pat-web{background:linear-gradient(135deg,var(--char3) 0%,#1e2130 100%);}
-.pat-cli{background:linear-gradient(135deg,#0d1117 0%,#1a1d27 100%);}
-.pat-ml{background:linear-gradient(135deg,#1a1020 0%,#2a1428 100%);}
-.pat-os{background:linear-gradient(135deg,#0a0f0a 0%,#111a11 100%);}
-.pat-security{background:linear-gradient(135deg,#0f0a14 0%,#1a1020 100%);}
+  /* PATTERNS */
+  .pat-web {
+    background: linear-gradient(135deg, var(--char3) 0%, #1e2130 100%);
+  }
+  .pat-cli {
+    background: linear-gradient(135deg, #0d1117 0%, #1a1d27 100%);
+  }
+  .pat-ml {
+    background: linear-gradient(135deg, #1a1020 0%, #2a1428 100%);
+  }
+  .pat-os {
+    background: linear-gradient(135deg, #0a0f0a 0%, #111a11 100%);
+  }
+  .pat-security {
+    background: linear-gradient(135deg, #0f0a14 0%, #1a1020 100%);
+  }
 
-/* OPEN SOURCE STRIP */
-.oss-strip{
-  padding:0 52px 96px;
-}
-.oss-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:12px;margin-top:40px;
-}
-.oss-card{
-  background:var(--char2);border:1px solid var(--border);
-  border-radius:10px;padding:20px 22px;
-  text-decoration:none;color:inherit;
-  transition:border-color .2s,transform .2s;display:block;
-}
-.oss-card:hover{border-color:var(--red-border);transform:translateY(-2px);}
-.oss-name{font-size:14px;font-weight:700;color:var(--off);margin-bottom:6px;}
-.oss-desc{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:12px;}
-.oss-meta{display:flex;gap:12px;align-items:center;}
-.oss-lang{
-  font-size:10px;font-weight:700;color:var(--muted);
-  display:flex;align-items:center;gap:5px;
-}
-.lang-dot{width:8px;height:8px;border-radius:50%;}
-.oss-stars{font-size:10px;color:var(--muted);}
+  /* OPEN SOURCE STRIP */
+  .oss-strip {
+    padding: 0 52px 96px;
+  }
+  .oss-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 40px;
+  }
+  .oss-card {
+    background: var(--char2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 22px;
+    text-decoration: none;
+    color: inherit;
+    transition:
+      border-color 0.2s,
+      transform 0.2s;
+    display: block;
+  }
+  .oss-card:hover {
+    border-color: var(--red-border);
+    transform: translateY(-2px);
+  }
+  .oss-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--off);
+    margin-bottom: 6px;
+  }
+  .oss-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+  .oss-meta {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  .oss-lang {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .lang-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+  .oss-stars {
+    font-size: 10px;
+    color: var(--muted);
+  }
 
-@media(max-width:1100px){.masonry{columns:2;}}
-@media(max-width:700px){
-  .masonry{columns:1;}
-  .masonry-wrap,.filter-bar,.proj-hero,.oss-strip{padding-left:20px;padding-right:20px;}
-  .oss-grid{grid-template-columns:1fr 1fr;}
-}
-@media(max-width:500px){.oss-grid{grid-template-columns:1fr;}}
+  @media (max-width: 1100px) {
+    .masonry {
+      columns: 2;
+    }
+  }
+  @media (max-width: 700px) {
+    .masonry {
+      columns: 1;
+    }
+    .masonry-wrap,
+    .filter-bar,
+    .proj-hero,
+    .oss-strip {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .oss-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 500px) {
+    .oss-grid {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
 
 <script is:inline>
-window.filterCards = function(cat, btn) {
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.masonry-item').forEach(item => {
-    const cats = item.dataset.cat || '';
-    if (cat === 'all' || cats.includes(cat)) {
-      item.style.display = 'block';
-    } else {
-      item.style.display = 'none';
-    }
-  });
-}
+  window.filterCards = function (cat, btn) {
+    document
+      .querySelectorAll(".filter-btn")
+      .forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+    document.querySelectorAll(".masonry-item").forEach((item) => {
+      const cats = item.dataset.cat || "";
+      if (cat === "all" || cats.includes(cat)) {
+        item.style.display = "block";
+      } else {
+        item.style.display = "none";
+      }
+    });
+  };
 </script>

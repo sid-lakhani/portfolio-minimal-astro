@@ -1,89 +1,175 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout 
-  title="About — Siddhesh Lakhani" 
+<BaseLayout
+  title="About — Siddhesh Lakhani"
   description="Full Stack Engineer from Mumbai — Linux enthusiast, Next.js developer, freelance builder."
   activePage="about"
 >
   <div class="page-wrap">
-
     <div class="about-hero">
       <div class="grid-bg"></div>
       <div class="about-hero-inner">
-        <div class="section-tag">Know Me Better</div>
-        <h1 class="section-h">Siddhesh<br><span style="color:var(--red)">Lakhani.</span></h1>
-        <p class="section-sub">Full Stack Engineer · Linux Enthusiast · Freelance Developer · Building production-grade systems from Mumbai, India.</p>
-      </div>
-    </div>
-
-    <div class="terminal-wrap">
-      <div class="terminal">
-        <div class="terminal-bar">
-          <div class="t-dot red"></div>
-          <div class="t-dot yellow"></div>
-          <div class="t-dot green"></div>
-          <span class="terminal-title">whoami.sh</span>
-        </div>
-        <div class="terminal-body">
-          <div><span class="t-comment">## >> whoami</span></div>
-          <br>
-          <div><span class="t-key">name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="t-val">: Siddhesh Lakhani</span></div>
-          <div><span class="t-key">role&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="t-val">: Full Stack Developer</span></div>
-          <div><span class="t-key">location&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="t-val">: Mumbai, India</span></div>
-          <div><span class="t-key">distro&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="t-green">: Arch Linux (btw, I use Arch)</span></div>
-          <div><span class="t-key">wm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="t-val">: DWM — riced &amp; suckless</span></div>
-          <br>
-          <div><span class="t-key">currently:</span></div>
-          <div>&nbsp;&nbsp;<span class="t-key">learning&nbsp;&nbsp;</span><span class="t-val">: Linux internals, K8s in prod</span></div>
-          <div>&nbsp;&nbsp;<span class="t-key">obsessing </span><span class="t-val">: self-hosting everything possible</span></div>
-          <br>
-          <div><span class="t-key">values:</span></div>
-          <div>&nbsp;&nbsp;<span class="t-red">- Minimalism in code AND design</span></div>
-          <div>&nbsp;&nbsp;<span class="t-red">- Ship fast, optimize later</span></div>
-          <div>&nbsp;&nbsp;<span class="t-red">- Own your stack, own your data</span></div>
-          <br>
-          <div><span class="t-key">contact&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="t-val">: lakhani.siddhesh@gmail.com</span></div>
-          <div><span class="t-key">portfolio&nbsp;&nbsp;&nbsp;</span><span class="t-green">: sidlakhani.in</span></div>
-        </div>
+        <div class="section-tag">My Story</div>
+        <h1 class="section-h">
+          Know me<br /><span style="color:var(--red)">Better.</span>
+        </h1>
+        <p class="section-sub">
+          Full Stack Engineer | Linux · FOSS | Freelance Developer | Building
+          production-grade systems
+        </p>
       </div>
     </div>
 
     <div class="bio-section">
       <div class="bio-text">
-        <div class="section-tag">My Story</div>
-        <h2 class="section-h" style="margin-bottom:32px;">Minimalism<br>meets<br><span style="color:var(--red)">Performance.</span></h2>
-        <p>I'm a passionate developer, tech enthusiast, and gamer who loves building cool stuff on the web. My journey started with <strong>JavaScript and TypeScript</strong>, crafting seamless, high-performance web apps with Next.js, React, and Tailwind CSS.</p>
-        <p>Lately, I've been diving deeper into <strong>Linux</strong> — tweaking my workflow, optimizing performance, and exploring self-hosting. I'm currently running <strong>Garuda Linux</strong> for its speed and flexibility, and I run a custom <strong>DWM</strong> setup from scratch using the Suckless toolset.</p>
-        <p>I believe in <strong>minimalism</strong>, both in design and functionality. That reflects in my work, whether it's a clean, efficient codebase or a sleek, no-frills portfolio that focuses on what truly matters. <strong>Problem-solving</strong> is what drives me — whether it's debugging tricky code, integrating APIs, or fine-tuning my system for peak efficiency.</p>
-        <p>When I'm not coding, you'll probably find me immersed in <strong>gaming</strong>, vibing to music, or pushing my limits in sports. Tech, music, and competition fuel my energy, and I'm always up for a challenge.</p>
+        <p>
+          I'm <strong>Siddhesh Lakhani</strong>, a Full Stack Developer based in
+          Mumbai. I specialize in building production-grade systems using <strong
+            >Next.js, Express, PostgreSQL, and Docker</strong
+          >. My workflow is driven by a deep interest in <strong
+            >Arch Linux</strong
+          > and systems programming, running a custom-patched <strong
+            >DWM</strong
+          > setup to keep things lightweight and efficient.
+        </p>
+        <p>
+          I believe in <strong>minimalism</strong>, both in design and
+          functionality. This means shipping fast, owning my stack, and ensuring
+          that every line of code serves a purpose. Whether it's debugging
+          low-level kernel interactions or fine-tuning a pixel-perfect UI, I
+          focus on performance and control.
+        </p>
+        <p>
+          Currently, I'm deep-diving into <strong>Linux kernel internals</strong
+          > and exploring <strong>systems programming</strong> to understand the layers
+          beneath the application. When I'm not at the terminal, you'll find me gaming,
+          vibing to music, or pushing limits in sports.
+        </p>
         <div class="bio-ctas">
           <a href="/contact" class="btn-primary">Let's Build Together</a>
-          <a href="/Resume.pdf" target="_blank" class="btn-outline">Download Resume ↗</a>
+          <a href="/Resume.pdf" target="_blank" class="btn-outline"
+            >Download Resume ↗</a
+          >
         </div>
       </div>
       <div>
         <div class="values-list">
           <div class="value-item">
-            <div class="value-icon">⚡</div>
-            <div><div class="value-title">Ship Fast</div><div class="value-desc">Build MVPs, iterate quickly, optimize when needed. Don't over-engineer.</div></div>
+            <div class="value-icon">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg
+              >
+            </div>
+            <div>
+              <div class="value-title">Ship Fast</div><div class="value-desc">
+                Build MVPs, iterate quickly, optimize when needed. Don't
+                over-engineer.
+              </div>
+            </div>
           </div>
           <div class="value-item">
-            <div class="value-icon">🔐</div>
-            <div><div class="value-title">Own Your Stack</div><div class="value-desc">Self-host when possible. Control your data, your infra, your systems.</div></div>
+            <div class="value-icon">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><rect x="3" y="11" width="18" height="11" rx="2" ry="2"
+                ></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg
+              >
+            </div>
+            <div>
+              <div class="value-title">Own Your Stack</div><div
+                class="value-desc"
+              >
+                Self-host when possible. Control your data, your infra, your
+                systems.
+              </div>
+            </div>
           </div>
           <div class="value-item">
-            <div class="value-icon">🧹</div>
-            <div><div class="value-title">Minimalism First</div><div class="value-desc">Less noise, more signal — in code, in design, in tooling.</div></div>
+            <div class="value-icon">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path
+                  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707"
+                ></path></svg
+              >
+            </div>
+            <div>
+              <div class="value-title">Minimalism First</div><div
+                class="value-desc"
+              >
+                Less noise, more signal — in code, in design, in tooling.
+              </div>
+            </div>
           </div>
           <div class="value-item">
-            <div class="value-icon">🐧</div>
-            <div><div class="value-title">Linux Purist</div><div class="value-desc">Arch + DWM. Full control. No bloat. Riced and suckless.</div></div>
+            <div class="value-icon">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path d="M4 17l6-6-6-6M12 19h8"></path></svg
+              >
+            </div>
+            <div>
+              <div class="value-title">Linux Purist</div><div
+                class="value-desc"
+              >
+                Arch + DWM. Full control. No bloat. Riced and suckless.
+              </div>
+            </div>
           </div>
           <div class="value-item">
-            <div class="value-icon">🌐</div>
-            <div><div class="value-title">Full-Stack Thinking</div><div class="value-desc">From DB schema to pixel-perfect UI — I think end-to-end.</div></div>
+            <div class="value-icon">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline
+                  points="2 17 12 22 22 17"></polyline><polyline
+                  points="2 12 12 17 22 12"></polyline></svg
+              >
+            </div>
+            <div>
+              <div class="value-title">Full-Stack Thinking</div><div
+                class="value-desc"
+              >
+                From DB schema to pixel-perfect UI — I think end-to-end.
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -91,53 +177,76 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     <div class="stack-section">
       <div class="section-tag">My Stack</div>
-      <h2 class="section-h" style="margin-bottom:4px;">Technologies I<br><span style="color:var(--red)">Work With.</span></h2>
+      <h2 class="section-h" style="margin-bottom:4px;">
+        Technologies I<br /><span style="color:var(--red)">Work With.</span>
+      </h2>
       <div class="stack-categories">
         <div class="stack-cat">
           <div class="stack-cat-label">→ Frontend</div>
           <div class="stack-pills">
-            <span class="stack-pill">Next.js</span><span class="stack-pill">React</span>
-            <span class="stack-pill">TypeScript</span><span class="stack-pill">TailwindCSS</span>
+            <span class="stack-pill">Next.js</span><span class="stack-pill"
+              >React</span
+            >
+            <span class="stack-pill">TypeScript</span><span class="stack-pill"
+              >TailwindCSS</span
+            >
             <span class="stack-pill">Astro</span>
           </div>
         </div>
         <div class="stack-cat">
           <div class="stack-cat-label">→ Backend</div>
           <div class="stack-pills">
-            <span class="stack-pill">FastAPI</span><span class="stack-pill">Node.js</span>
-            <span class="stack-pill">Python</span><span class="stack-pill">Bun</span>
-            <span class="stack-pill">Express</span>
+            <span class="stack-pill">Express</span><span class="stack-pill"
+              >Node.js</span
+            >
+            <span class="stack-pill">Python</span><span class="stack-pill"
+              >Bun</span
+            >
           </div>
         </div>
         <div class="stack-cat">
           <div class="stack-cat-label">→ Databases</div>
           <div class="stack-pills">
-            <span class="stack-pill">PostgreSQL</span><span class="stack-pill">MySQL</span>
-            <span class="stack-pill">Supabase</span><span class="stack-pill">Prisma</span>
+            <span class="stack-pill">PostgreSQL</span><span class="stack-pill"
+              >MySQL</span
+            >
+            <span class="stack-pill">Supabase</span><span class="stack-pill"
+              >Prisma</span
+            >
             <span class="stack-pill">Firebase</span>
           </div>
         </div>
         <div class="stack-cat">
           <div class="stack-cat-label">→ Infra</div>
           <div class="stack-pills">
-            <span class="stack-pill">Docker</span><span class="stack-pill">Kubernetes</span>
-            <span class="stack-pill">Nginx</span><span class="stack-pill">Cloudflare</span>
-            <span class="stack-pill">Vercel</span><span class="stack-pill">Vultr</span>
+            <span class="stack-pill">Docker</span>
+            <span class="stack-pill">Nginx</span><span class="stack-pill"
+              >Cloudflare</span
+            >
+            <span class="stack-pill">Vercel</span>
           </div>
         </div>
         <div class="stack-cat">
           <div class="stack-cat-label">→ ML / CV</div>
           <div class="stack-pills">
-            <span class="stack-pill">TensorFlow</span><span class="stack-pill">PyTorch</span>
-            <span class="stack-pill">OpenCV</span><span class="stack-pill">Keras</span>
+            <span class="stack-pill">TensorFlow</span><span class="stack-pill"
+              >PyTorch</span
+            >
+            <span class="stack-pill">OpenCV</span><span class="stack-pill"
+              >Keras</span
+            >
             <span class="stack-pill">scikit-learn</span>
           </div>
         </div>
         <div class="stack-cat">
           <div class="stack-cat-label">→ Systems</div>
           <div class="stack-pills">
-            <span class="stack-pill">Linux</span><span class="stack-pill">Rust</span>
-            <span class="stack-pill">C++</span><span class="stack-pill">Bash</span>
+            <span class="stack-pill">Linux</span><span class="stack-pill"
+              >Rust</span
+            >
+            <span class="stack-pill">C++</span><span class="stack-pill"
+              >Bash</span
+            >
             <span class="stack-pill">Git</span>
           </div>
         </div>
@@ -147,27 +256,113 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="beyond-section">
       <div class="inner">
         <div class="section-tag" style="padding:0;">Beyond the Terminal</div>
-        <h2 class="section-h" style="margin:12px 0 0;">Life outside<br><span style="color:var(--red)">the code.</span></h2>
+        <h2 class="section-h" style="margin:12px 0 0;">
+          Life outside<br /><span style="color:var(--red)">the code.</span>
+        </h2>
         <div class="beyond-grid">
           <div class="beyond-card">
-            <div class="beyond-emoji">🎮</div>
-            <div class="beyond-title">Gaming</div>
-            <div class="beyond-desc">Competitive gamer. Clutch plays and game-winning moments fuel the same energy as solving hard bugs.</div>
+            <div class="beyond-header">
+              <div class="beyond-icon">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><line x1="6" y1="12" x2="10" y2="12"></line><line
+                    x1="8"
+                    y1="10"
+                    x2="8"
+                    y2="14"></line><circle cx="15.5" cy="15.5" r=".5"
+                  ></circle><circle cx="18.5" cy="12.5" r=".5"></circle><path
+                    d="M18 5H6a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3z"
+                  ></path></svg
+                >
+              </div>
+              <div class="beyond-title">Gaming</div>
+            </div>
+            <div class="beyond-desc">
+              Competitive gamer. Clutch plays and game-winning moments fuel the
+              same energy as solving hard bugs.
+            </div>
           </div>
           <div class="beyond-card">
-            <div class="beyond-emoji">🎵</div>
-            <div class="beyond-title">Music</div>
-            <div class="beyond-desc">Always vibing. Music is the background process running while I ship features.</div>
+            <div class="beyond-header">
+              <div class="beyond-icon">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"
+                  ></circle><circle cx="18" cy="16" r="3"></circle></svg
+                >
+              </div>
+              <div class="beyond-title">Music</div>
+            </div>
+            <div class="beyond-desc">
+              Always vibing. Music is the background process running while I
+              ship features.
+            </div>
           </div>
           <div class="beyond-card">
-            <div class="beyond-emoji">🏅</div>
-            <div class="beyond-title">Sports</div>
-            <div class="beyond-desc">Pushing limits physically. Competition and performance — on the field and in the terminal.</div>
+            <div class="beyond-header">
+              <div class="beyond-icon">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path
+                    d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"
+                  ></path><path
+                    d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"
+                  ></path><path
+                    d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"
+                  ></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"></path></svg
+                >
+              </div>
+              <div class="beyond-title">Sports</div>
+            </div>
+            <div class="beyond-desc">
+              Pushing limits physically. Competition and performance — on the
+              field and in the terminal.
+            </div>
           </div>
           <div class="beyond-card">
-            <div class="beyond-emoji">🔧</div>
-            <div class="beyond-title">Tinkering</div>
-            <div class="beyond-desc">Linux ricing, self-hosting experiments, hardware tweaks. Always something running on a VPS.</div>
+            <div class="beyond-header">
+              <div class="beyond-icon">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><path
+                    d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
+                  ></path></svg
+                >
+              </div>
+              <div class="beyond-title">Tinkering</div>
+            </div>
+            <div class="beyond-desc">
+              Linux ricing, self-hosting experiments, hardware tweaks. Always
+              something running on a VPS.
+            </div>
           </div>
         </div>
       </div>
@@ -175,152 +370,271 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     <div class="cta-block">
       <div class="glow"></div>
-      <div class="section-tag" style="display:inline-block;margin-bottom:20px;">What's next?</div>
-      <h2>Let's build<br><span style="color:var(--red)">something great.</span></h2>
-      <p>Open to freelance projects, full-time roles, and interesting collaborations. Don't be a stranger.</p>
+      <div class="section-tag" style="display:inline-block;margin-bottom:20px;">
+        What's next?
+      </div>
+      <h2>
+        Let's build<br /><span style="color:var(--red)">something great.</span>
+      </h2>
+      <p>
+        Open to freelance projects, full-time roles, and interesting
+        collaborations. Don't be a stranger.
+      </p>
       <div class="btns">
         <a href="/contact" class="btn-primary">Get In Touch</a>
         <a href="/projects" class="btn-outline">See My Work</a>
         <a href="/Resume.pdf" target="_blank" class="btn-outline">Resume ↗</a>
       </div>
     </div>
-
   </div>
 </BaseLayout>
 
 <style>
-/* ABOUT PAGE */
-.about-hero{
-  padding:120px 52px 80px;
-  position:relative;overflow:hidden;
-}
-.about-hero .grid-bg{opacity:.6;}
-.about-hero-inner{position:relative;z-index:2;max-width:700px;}
-.about-hero-inner .section-h{margin-top:12px;}
-.about-hero-inner .section-sub{max-width:580px;}
+  /* ABOUT PAGE */
+  .about-hero {
+    padding: 120px 52px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .about-hero .grid-bg {
+    opacity: 0.6;
+  }
+  .about-hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+  }
+  .about-hero-inner .section-h {
+    margin-top: 12px;
+  }
+  .about-hero-inner .section-sub {
+    max-width: 580px;
+  }
 
-/* WHOAMI TERMINAL */
-.terminal-wrap{
-  padding:0 52px 80px;
-}
-.terminal{
-  background:var(--char2);
-  border:1px solid var(--border);
-  border-radius:12px;overflow:hidden;
-  max-width:680px;
-}
-.terminal-bar{
-  display:flex;align-items:center;gap:8px;
-  padding:12px 16px;
-  background:var(--char3);
-  border-bottom:1px solid var(--border);
-}
-.t-dot{width:10px;height:10px;border-radius:50%;}
-.t-dot.red{background:#ff5f57;}
-.t-dot.yellow{background:#febc2e;}
-.t-dot.green{background:#28c840;}
-.terminal-title{font-size:11px;color:var(--muted);margin-left:4px;font-weight:600;letter-spacing:0.06em;}
-.terminal-body{padding:24px 28px;font-family:'Space Grotesk',monospace;font-size:13px;line-height:1.9;}
-.t-key{color:var(--muted);}
-.t-val{color:var(--off);}
-.t-red{color:var(--red);}
-.t-green{color:#4ade80;}
-.t-comment{color:#444a5e;font-style:italic;}
+  /* BIO SECTION */
+  .bio-section {
+    padding: 0 52px 80px;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .bio-text p {
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.85;
+    margin-bottom: 18px;
+  }
+  .bio-text p strong {
+    color: var(--off);
+  }
+  .bio-text .bio-ctas {
+    margin-top: 32px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
 
-/* BIO SECTION */
-.bio-section{
-  padding:0 52px 80px;
-  display:grid;grid-template-columns:3fr 2fr;gap:64px;align-items:start;
-}
-.bio-text p{font-size:16px;color:var(--muted);line-height:1.85;margin-bottom:18px;}
-.bio-text p strong{color:var(--off);}
-.bio-text .bio-ctas{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap;}
+  /* VALUES */
+  .values-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .value-item {
+    background: var(--char2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 22px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: border-color 0.2s;
+  }
+  .value-item:hover {
+    border-color: var(--red-border);
+  }
+  .value-icon {
+    color: var(--red);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .value-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--off);
+    margin-bottom: 4px;
+  }
+  .value-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
 
-/* VALUES */
-.values-list{display:flex;flex-direction:column;gap:2px;}
-.value-item{
-  background:var(--char2);
-  border:1px solid var(--border);
-  border-radius:8px;padding:20px 22px;
-  display:flex;align-items:flex-start;gap:14px;
-  transition:border-color .2s;
-}
-.value-item:hover{border-color:var(--red-border);}
-.value-icon{
-  font-size:16px;flex-shrink:0;margin-top:2px;
-}
-.value-title{font-size:14px;font-weight:600;color:var(--off);margin-bottom:4px;}
-.value-desc{font-size:12px;color:var(--muted);line-height:1.5;}
+  /* STACK SECTION */
+  .stack-section {
+    padding: 0 52px 80px;
+  }
+  .stack-categories {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+  }
+  .stack-cat {
+    background: var(--char2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px 22px;
+    transition: border-color 0.2s;
+  }
+  .stack-cat:hover {
+    border-color: var(--red-border);
+  }
+  .stack-cat-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 16px;
+  }
+  .stack-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+  .stack-pill {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--off2);
+    background: var(--char3);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    padding: 5px 12px;
+    border-radius: 5px;
+    transition:
+      border-color 0.2s,
+      color 0.2s;
+  }
+  .stack-pill:hover {
+    border-color: var(--red);
+    color: var(--off);
+  }
 
-/* STACK SECTION */
-.stack-section{
-  padding:0 52px 80px;
-}
-.stack-categories{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px;
-}
-.stack-cat{
-  background:var(--char2);border:1px solid var(--border);
-  border-radius:10px;padding:24px 22px;
-  transition:border-color .2s;
-}
-.stack-cat:hover{border-color:var(--red-border);}
-.stack-cat-label{
-  font-size:10px;font-weight:700;letter-spacing:0.12em;
-  text-transform:uppercase;color:var(--red);margin-bottom:16px;
-}
-.stack-pills{display:flex;flex-wrap:wrap;gap:7px;}
-.stack-pill{
-  font-size:12px;font-weight:600;color:var(--off2);
-  background:var(--char3);
-  border:1px solid rgba(255,255,255,0.07);
-  padding:5px 12px;border-radius:5px;
-  transition:border-color .2s,color .2s;
-}
-.stack-pill:hover{border-color:var(--red);color:var(--off);}
+  /* BEYOND CODE */
+  .beyond-section {
+    padding: 0 52px 96px;
+    background: var(--char2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin: 0 0 80px;
+  }
+  .beyond-section .inner {
+    padding: 80px 0;
+  }
+  .beyond-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-top: 40px;
+  }
+  .beyond-card {
+    background: var(--char3);
+    padding: 28px 24px;
+    border-left: 1px solid var(--border);
+  }
+  .beyond-card:first-child {
+    border-left: none;
+  }
+  .beyond-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    height: 24px; /* Fix height to ensure vertical baseline is consistent */
+  }
+  .beyond-icon {
+    color: var(--red);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .beyond-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--off);
+    line-height: normal;
+  }
+  .beyond-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
 
-/* BEYOND CODE */
-.beyond-section{
-  padding:0 52px 96px;
-  background:var(--char2);
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-  margin:0 0 80px;
-}
-.beyond-section .inner{padding:80px 0;}
-.beyond-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:40px;}
-.beyond-card{
-  background:var(--char3);padding:28px 24px;
-  border-left:1px solid var(--border);
-}
-.beyond-card:first-child{border-left:none;}
-.beyond-emoji{font-size:24px;margin-bottom:14px;}
-.beyond-title{font-size:14px;font-weight:700;color:var(--off);margin-bottom:6px;}
-.beyond-desc{font-size:13px;color:var(--muted);line-height:1.6;}
+  /* CTA BLOCK */
+  .cta-block {
+    padding: 0 52px 96px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-block .glow {
+    position: absolute;
+    bottom: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    height: 280px;
+    background: radial-gradient(
+      circle,
+      rgba(255, 59, 59, 0.08) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+  .cta-block h2 {
+    font-family: "Syne", sans-serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    margin-bottom: 16px;
+  }
+  .cta-block p {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 420px;
+    margin: 0 auto 36px;
+    line-height: 1.7;
+  }
+  .cta-block .btns {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
 
-/* CTA BLOCK */
-.cta-block{
-  padding:0 52px 96px;text-align:center;
-  position:relative;overflow:hidden;
-}
-.cta-block .glow{
-  position:absolute;bottom:-80px;left:50%;transform:translateX(-50%);
-  width:500px;height:280px;
-  background:radial-gradient(circle,rgba(255,59,59,0.08) 0%,transparent 70%);
-  pointer-events:none;
-}
-.cta-block h2{
-  font-family:'Syne',sans-serif;font-size:clamp(32px,4vw,52px);
-  font-weight:800;letter-spacing:-1.5px;margin-bottom:16px;
-}
-.cta-block p{font-size:16px;color:var(--muted);max-width:420px;margin:0 auto 36px;line-height:1.7;}
-.cta-block .btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
-
-@media(max-width:900px){
-  .about-hero,.bio-section,.stack-section,.cta-block,.terminal-wrap{padding-left:20px;padding-right:20px;}
-  .bio-section{grid-template-columns:1fr;}
-  .stack-categories{grid-template-columns:1fr 1fr;}
-  .beyond-grid{grid-template-columns:1fr 1fr;}
-  .beyond-section{padding-left:20px;padding-right:20px;}
-}
+  @media (max-width: 900px) {
+    .about-hero,
+    .bio-section,
+    .stack-section,
+    .cta-block,
+    .terminal-wrap {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .bio-section {
+      grid-template-columns: 1fr;
+    }
+    .stack-categories {
+      grid-template-columns: 1fr 1fr;
+    }
+    .beyond-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .beyond-section {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
 </style>

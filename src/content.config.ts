@@ -13,6 +13,7 @@ const projects = defineCollection({
 		github: z.string().url().optional(),
 		live: z.string().url().optional(),
 		cover: z.string().optional(),
+		ratio: z.string().optional(),
 		description: z.string(),
 		order: z.number().optional(),
 	}),

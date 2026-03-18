@@ -10,7 +10,7 @@ const featured = allProjects
 
 <BaseLayout
   title="Siddhesh Lakhani — Full Stack Developer & Builder"
-  description="Siddhesh Lakhani — Full Stack Engineer from Mumbai. Building production-grade systems with Next.js, FastAPI, Linux. Open to freelance and full-time roles."
+  description="Siddhesh Lakhani — Full Stack Engineer from Mumbai. Building production-grade systems with Next.js, Express, Linux. Open to freelance and full-time roles."
   activePage="home"
 >
   <Fragment slot="head">
@@ -41,21 +41,20 @@ const featured = allProjects
       </h1>
 
       <div class="hero-desc-row">
-        <p class="hero-sub">
-          <strong>Full Stack Engineer</strong> shipping production-grade systems —
-          from database schema to pixel-perfect UI. Currently obsessing over
-          <strong>Linux internals</strong> and self-hosting everything possible.
-        </p>
         <div class="hero-tags-inline">
           <span class="htag">Next.js</span>
-          <span class="htag">FastAPI</span>
+          <span class="htag">Express</span>
           <span class="htag">PostgreSQL</span>
           <span class="htag">Docker</span>
           <span class="htag">Rust</span>
           <span class="htag">Arch Linux</span>
           <span class="htag">TypeScript</span>
-          <span class="htag">Kubernetes</span>
         </div>
+        <p class="hero-sub">
+          <strong>Full Stack Engineer</strong> shipping production-grade systems —
+          from database schema to pixel-perfect UI. Currently obsessing over
+          <strong>Linux internals</strong> and self-hosting everything possible.
+        </p>
       </div>
 
       <div class="hero-ctas">
@@ -120,9 +119,8 @@ const featured = allProjects
         <div class="hstat-label">GitHub Repos</div>
         <div class="hstat-bar"></div>
       </div>
-      <div class="hstat">
-        <div class="hstat-num">∞</div>
-        <div class="hstat-label">Linux Configs</div>
+      <div class="hstat hstat-vcenter">
+        <div class="hstat-label-mid">Arch btw :p</div>
         <div class="hstat-bar"></div>
       </div>
     </div>
@@ -133,7 +131,7 @@ const featured = allProjects
     <div class="ticker">
       <span class="tick-item">Next.js</span><span class="tick-item">React</span>
       <span class="tick-item">TypeScript</span><span class="tick-item"
-        >FastAPI</span
+        >Express</span
       >
       <span class="tick-item">Node.js</span><span class="tick-item"
         >PostgreSQL</span
@@ -142,16 +140,14 @@ const featured = allProjects
       <span class="tick-item">Arch Linux</span><span class="tick-item"
         >Nginx</span
       >
-      <span class="tick-item">Kubernetes</span><span class="tick-item"
-        >Prisma</span
-      >
+      <span class="tick-item">Prisma</span>
       <span class="tick-item">TailwindCSS</span><span class="tick-item"
         >Python</span
       >
       <span class="tick-item">DWM</span><span class="tick-item">OpenCV</span>
       <span class="tick-item">Next.js</span><span class="tick-item">React</span>
       <span class="tick-item">TypeScript</span><span class="tick-item"
-        >FastAPI</span
+        >Express</span
       >
       <span class="tick-item">Node.js</span><span class="tick-item"
         >PostgreSQL</span
@@ -160,9 +156,7 @@ const featured = allProjects
       <span class="tick-item">Arch Linux</span><span class="tick-item"
         >Nginx</span
       >
-      <span class="tick-item">Kubernetes</span><span class="tick-item"
-        >Prisma</span
-      >
+      <span class="tick-item">Prisma</span>
       <span class="tick-item">TailwindCSS</span><span class="tick-item"
         >Python</span
       >
@@ -192,14 +186,13 @@ const featured = allProjects
       <div class="about-prose">
         <p>
           I'm a <strong>Full Stack Engineer</strong> from Mumbai, building production-grade
-          systems with Next.js, FastAPI, PostgreSQL, and Docker. My journey started
+          systems with Next.js, Express, PostgreSQL, and Docker. My journey started
           with JavaScript — now I'm deep in <strong>Linux internals</strong>,
           K8s in production, and self-hosting everything possible.
         </p>
         <p>
-          I run a custom <strong>DWM setup</strong> on Arch Linux, wrote a color picker
-          in Rust that's now on the AUR, and believe the best code is the code you
-          control — from the metal up.
+          I run a custom <strong>DWM setup</strong> on Arch Linux, and believe the
+          best code is the code you control — from the metal up.
         </p>
       </div>
       <div class="mini-terminal">
@@ -209,30 +202,78 @@ const featured = allProjects
           <div class="t-dot t-green"></div>
         </div>
         <div class="mini-terminal-body">
-          <div>
-            <span class="tc">distro&nbsp;&nbsp;&nbsp;&nbsp;</span><span
-              class="tg">: Arch Linux (btw)</span
-            >
-          </div>
-          <div>
-            <span class="tc"
-              >wm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span
-            ><span class="tv">: DWM — riced &amp; suckless</span>
-          </div>
-          <div>
-            <span class="tc">learning&nbsp;&nbsp;</span><span class="tv"
-              >: Linux internals, K8s in prod</span
-            >
-          </div>
-          <div>
-            <span class="tc">obsessing </span><span class="tr"
-              >: self-hosting everything</span
-            >
-          </div>
-          <div>
-            <span class="tc">email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span
-              class="tv">: lakhani.siddhesh@gmail.com</span
-            >
+          <div class="terminal-content">
+            <div class="terminal-left">
+              <pre
+                class="arch-ascii">
+                  <span class="tr">-`</span>
+                 <span class="tr">.o+`</span>
+                <span class="tr">`ooo/</span>
+               <span class="tr">`+oooo:</span>
+              <span class="tr">`+oooooo:</span>
+              <span class="tr">-+oooooo+:</span>
+            <span class="tr">`/:-:++oooo+:</span>
+           <span class="tr">`/++++/+++++++:</span>
+          <span class="tr">`/++++++++++++++:</span>
+         <span class="tr">`/+++o</span><span class="tv">oooooooo</span><span class="tr">oooo/`</span>
+        <span class="tr">./</span><span class="tv">ooosssso++osssssso</span><span class="tr">+`</span>
+<span class="tv">       .oossssso-````/ossssss+`</span>
+      <span class="tv">-osssssso.      :ssssssso.</span>
+     <span class="tv">:osssssss/        osssso+++.</span>
+    <span class="tv">/ossssssss/        +ssssooo/-</span>
+  <span class="tv">`/ossssso+/:-        -:/+osssso+-</span>
+ <span class="tv">`+sso+:-`                 `.-/+oso:</span>
+<span class="tv">`++:.                           `-/+/</span>
+<span class="tv">.`                                 `/</span></pre>
+            </div>
+            <div class="terminal-right">
+              <div class="t-line">
+                <span class="tc">user@host</span><span class="tg"
+                  >: sid@arch</span
+                >
+              </div>
+              <div class="t-line">
+                <span class="tc">os</span><span class="tv"
+                  >: Arch Linux x86_64</span
+                >
+              </div>
+              <div class="t-line">
+                <span class="tc">kernel</span><span class="tv"
+                  >: 6.12.x-riced</span
+                >
+              </div>
+              <div class="t-line">
+                <span class="tc">uptime</span><span class="tv">: 3d 12h 4m</span
+                >
+              </div>
+              <div class="t-line">
+                <span class="tc">pkgs</span><span class="tv"
+                  >: 842 (pacman)</span
+                >
+              </div>
+              <div class="t-line">
+                <span class="tc">shell</span><span class="tv">: zsh 5.9</span>
+              </div>
+              <div class="t-line">
+                <span class="tc">wm</span><span class="tv">: DWM (patched)</span
+                >
+              </div>
+              <div class="t-line">
+                <span class="tc">terminal</span><span class="tv"
+                  >: st-256color</span
+                >
+              </div>
+              <div class="t-line">
+                <span class="tc">theme</span><span class="tv"
+                  >: Nordic-Darker</span
+                >
+              </div>
+              <div class="t-line">
+                <span class="tc">cpu</span><span class="tv"
+                  >: Intel i7-12700H</span
+                >
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -249,17 +290,23 @@ const featured = allProjects
       <a href="/projects" class="btn-outline">All Projects →</a>
     </div>
     <div class="work-grid">
-      {featured.map((project, index) => (
-        <a href="/projects" class={index === 0 ? "wcard featured" : "wcard"}>
-          <span class="wcard-arrow">↗</span>
-          <div class="wcard-num">{index === 0 ? "Featured" : String(index + 1).padStart(2, "0")}</div>
-          <h3 class="wcard-title">{project.data.title}</h3>
-          <p class="wcard-desc">{project.data.description}</p>
-          <div class="wcard-tags">
-            {project.data.tags.map((tag) => <span class="wcard-tag">{tag}</span>)}
-          </div>
-        </a>
-      ))}
+      {
+        featured.map((project, index) => (
+          <a href="/projects" class={index === 0 ? "wcard featured" : "wcard"}>
+            <span class="wcard-arrow">↗</span>
+            <div class="wcard-num">
+              {index === 0 ? "Featured" : String(index + 1).padStart(2, "0")}
+            </div>
+            <h3 class="wcard-title">{project.data.title}</h3>
+            <p class="wcard-desc">{project.data.description}</p>
+            <div class="wcard-tags">
+              {project.data.tags.map((tag) => (
+                <span class="wcard-tag">{tag}</span>
+              ))}
+            </div>
+          </a>
+        ))
+      }
     </div>
   </div>
 
@@ -272,28 +319,33 @@ const featured = allProjects
         <div class="proc-step">01</div>
         <div class="proc-title">Schema before syntax</div>
         <div class="proc-desc">
-          I design the database first. Every table, every relation, every index — before a single API route exists. Bad schemas are expensive to fix at 2am.
+          I design the database first. Every table, every relation, every index
+          — before a single API route exists. Bad schemas are expensive to fix
+          at 2am.
         </div>
       </div>
       <div class="proc-item">
         <div class="proc-step">02</div>
         <div class="proc-title">Self-host by default</div>
         <div class="proc-desc">
-          If it runs on my VPS, I understand it. Nginx, Docker, Postgres, Cloudflare — I don't use managed services I can't SSH into.
+          If it runs on my VPS, I understand it. Nginx, Docker, Postgres,
+          Cloudflare — I don't use managed services I can't SSH into.
         </div>
       </div>
       <div class="proc-item">
         <div class="proc-step">03</div>
         <div class="proc-title">Rust when it matters</div>
         <div class="proc-desc">
-          pico is a published AUR package written in Rust. I reach for it when I need something small, fast, and impossible to corrupt.
+          pico is a published AUR package written in Rust. I reach for it when I
+          need something small, fast, and impossible to corrupt.
         </div>
       </div>
       <div class="proc-item">
         <div class="proc-step">04</div>
         <div class="proc-title">Ship, then rice</div>
         <div class="proc-desc">
-          Get it working, get it deployed, then obsess over the details. DWM took months of patching. My git history shows the real order.
+          Get it working, get it deployed, then obsess over the details. DWM
+          took months of patching. My git history shows the real order.
         </div>
       </div>
     </div>
@@ -328,8 +380,8 @@ const featured = allProjects
       <div class="curr-item">
         <span class="curr-badge">Exploring</span>
         <p class="curr-text">
-          <strong>Kubernetes in production</strong> — moving beyond docker-compose
-          for multi-service deployments on VPS.
+          <strong>Systems programming</strong> — lower-level abstractions with C and
+          Rust. Building more focus on efficiency.
         </p>
       </div>
       <div class="curr-item">
@@ -363,6 +415,24 @@ const featured = allProjects
     </div>
   </div>
 </BaseLayout>
+
+<script>
+  // Terminal Loading Animation on Viewport Entry
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.3 },
+  );
+
+  const terminal = document.querySelector(".mini-terminal");
+  if (terminal) observer.observe(terminal);
+</script>
 
 <style>
   /* ── HERO ── */
@@ -516,7 +586,9 @@ const featured = allProjects
     flex-wrap: wrap;
     gap: 8px;
     align-items: flex-start;
+    justify-content: center;
     padding-top: 4px;
+    width: 100%;
   }
   .htag {
     font-size: 11px;
@@ -599,6 +671,18 @@ const featured = allProjects
     text-transform: uppercase;
     color: var(--muted);
     margin-top: 3px;
+  }
+  .hstat-label-mid {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--off);
+  }
+  .hstat-vcenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   .hstat-bar {
     position: absolute;
@@ -738,6 +822,7 @@ const featured = allProjects
   }
   .tc {
     color: var(--muted);
+    font-weight: 700;
   }
   .tv {
     color: var(--off);
@@ -747,6 +832,90 @@ const featured = allProjects
   }
   .tr {
     color: var(--red);
+  }
+  .arch-ascii {
+    margin: 0;
+    line-height: 1.1;
+    font-size: 10px;
+    white-space: pre;
+    color: var(--red);
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  .animate .arch-ascii {
+    animation: fast-fade-in 0.8s ease forwards;
+  }
+  .terminal-content {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    width: 100%;
+  }
+  .terminal-left {
+    flex-shrink: 0;
+  }
+  .terminal-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5px;
+    flex-grow: 1;
+  }
+  @media (max-width: 600px) {
+    .terminal-content {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+  }
+  .t-line {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  .animate .t-line {
+    animation: fadeInUp 0.4s ease forwards;
+  }
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fast-fade-in {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  /* Animation Delays */
+  .animate .t-line:nth-child(1) {
+    animation-delay: 0.2s;
+  }
+  .animate .t-line:nth-child(2) {
+    animation-delay: 0.25s;
+  }
+  .animate .t-line:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  .animate .t-line:nth-child(4) {
+    animation-delay: 0.35s;
+  }
+  .animate .t-line:nth-child(5) {
+    animation-delay: 0.4s;
+  }
+  .animate .t-line:nth-child(6) {
+    animation-delay: 0.45s;
+  }
+  .animate .t-line:nth-child(7) {
+    animation-delay: 0.5s;
+  }
+  .animate .t-line:nth-child(8) {
+    animation-delay: 0.55s;
+  }
+  .animate .t-line:nth-child(9) {
+    animation-delay: 0.6s;
+  }
+  .animate .t-line:nth-child(10) {
+    animation-delay: 0.65s;
   }
 
   /* ── SELECTED WORK ── */

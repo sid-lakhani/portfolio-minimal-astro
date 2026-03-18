@@ -2,7 +2,7 @@
 title: pico — color picker
 slug: pico
 category: cli
-year: 2024
+year: 2025
 featured: true
 tags: [Rust, X11, AUR, Linux]
 github: https://github.com/sid-lakhani/pico
