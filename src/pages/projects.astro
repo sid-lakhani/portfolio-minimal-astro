@@ -126,120 +126,26 @@ const categoryMeta = {
       </div>
     </div>
 
-    <!-- Open Source / GitHub repos -->
+    <!-- CTA / Social Strip -->
     <div class="oss-strip">
-      <div class="section-tag">Open Source</div>
-      <h2 class="section-h" style="margin-bottom:4px;">On GitHub.</h2>
-      <p class="section-sub">
-        26 public repos and counting. Here are the pinned ones.
-      </p>
-      <div class="oss-grid">
-        <a
-          href="https://github.com/sid-lakhani/Auto-Selfie"
-          target="_blank"
-          class="oss-card"
-        >
-          <div class="oss-name">Auto-Selfie</div>
-          <div class="oss-desc">
-            AI smile detection that auto-captures selfies using Haar cascades.
-          </div>
-          <div class="oss-meta">
-            <span class="oss-lang"
-              ><span class="lang-dot" style="background:#3572A5"
-              ></span>Python</span
-            >
-            <span class="oss-stars">★ 3</span>
-          </div>
-        </a>
-        <a
-          href="https://github.com/sid-lakhani/dwm-dots"
-          target="_blank"
-          class="oss-card"
-        >
-          <div class="oss-name">dwm-dots</div>
-          <div class="oss-desc">My DWM config — patched, riced, suckless.</div>
-          <div class="oss-meta">
-            <span class="oss-lang"
-              ><span class="lang-dot" style="background:#555555"></span>C</span
-            >
-            <span class="oss-stars">★ 1</span>
-          </div>
-        </a>
-        <a
-          href="https://github.com/sid-lakhani/fer-ml"
-          target="_blank"
-          class="oss-card"
-        >
-          <div class="oss-name">fer-ml</div>
-          <div class="oss-desc">
-            CNN-based facial expression recognition on FER-2013.
-          </div>
-          <div class="oss-meta">
-            <span class="oss-lang"
-              ><span class="lang-dot" style="background:#3572A5"
-              ></span>Python</span
-            >
-            <span class="oss-stars">★ 1</span>
-          </div>
-        </a>
-        <a
-          href="https://github.com/sid-lakhani/vaultx"
-          target="_blank"
-          class="oss-card"
-        >
-          <div class="oss-name">vaultx</div>
-          <div class="oss-desc">
-            Encrypted cloud storage with RBAC and tamper-proof logging.
-          </div>
-          <div class="oss-meta">
-            <span class="oss-lang"
-              ><span class="lang-dot" style="background:#3178c6"
-              ></span>TypeScript</span
-            >
-            <span class="oss-stars">★ 1</span>
-          </div>
-        </a>
-        <a
-          href="https://github.com/sid-lakhani/pico"
-          target="_blank"
-          class="oss-card"
-        >
-          <div class="oss-name">pico</div>
-          <div class="oss-desc">
-            Minimal X11 color picker CLI. Fast, clean, AUR-published.
-          </div>
-          <div class="oss-meta">
-            <span class="oss-lang"
-              ><span class="lang-dot" style="background:#dea584"
-              ></span>Rust</span
-            >
-            <span class="oss-stars">★ 2</span>
-          </div>
-        </a>
-        <a
-          href="https://github.com/sid-lakhani/portfolio-v2"
-          target="_blank"
-          class="oss-card"
-        >
-          <div class="oss-name">portfolio-v2</div>
-          <div class="oss-desc">
-            My web space — Next.js portfolio, open sourced.
-          </div>
-          <div class="oss-meta">
-            <span class="oss-lang"
-              ><span class="lang-dot" style="background:#3178c6"
-              ></span>TypeScript</span
-            >
-            <span class="oss-stars">★ 1</span>
-          </div>
-        </a>
-      </div>
-      <div style="margin-top:24px;text-align:center;">
-        <a
-          href="https://github.com/sid-lakhani"
-          target="_blank"
-          class="btn-outline">All Repos on GitHub ↗</a
-        >
+      <div class="cta-card">
+        <div class="section-tag">More Projects</div>
+        <h2 class="section-h">Check out all my work.</h2>
+        <p class="section-sub">
+          Beyond these builds, you can find my public repositories, experiments, and ongoing rants on my GitHub.
+        </p>
+        <div class="cta-btns">
+          <a
+            href="https://github.com/sid-lakhani"
+            target="_blank"
+            class="btn-primary">View GitHub Profile ↗</a
+          >
+          <a
+            href="https://linkedin.com/in/siddhesh-lakhani"
+            target="_blank"
+            class="btn-outline">LinkedIn ↗</a
+          >
+        </div>
       </div>
     </div>
   </div>
@@ -466,6 +372,24 @@ const categoryMeta = {
   /* OPEN SOURCE STRIP */
   .oss-strip {
     padding: 0 52px 96px;
+  }
+  .cta-card {
+    background: var(--char2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 60px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-card .section-h {
+    margin: 12px 0 8px;
+  }
+  .cta-btns {
+    margin-top: 36px;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
   }
   .oss-grid {
     display: grid;
