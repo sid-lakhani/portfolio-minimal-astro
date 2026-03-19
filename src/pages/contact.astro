@@ -181,33 +181,39 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                     </div>
                     <div class="form-row">
                         <div class="form-group">
-                            <label class="form-label">Name</label>
+                            <label class="form-label" for="name">Name</label>
                             <input
+                                id="name"
                                 type="text"
                                 class="form-input"
                                 placeholder="Your name"
+                                required
                             />
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Email</label>
+                            <label class="form-label" for="email">Email</label>
                             <input
+                                id="email"
                                 type="email"
                                 class="form-input"
                                 placeholder="you@example.com"
+                                required
                             />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Subject</label>
+                        <label class="form-label" for="subject">Subject</label>
                         <input
+                            id="subject"
                             type="text"
                             class="form-input"
                             placeholder="What's this about?"
+                            required
                         />
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Type</label>
-                        <select class="form-input" style="cursor:pointer;">
+                        <label class="form-label" for="inquiry_type">Type</label>
+                        <select id="inquiry_type" class="form-input" style="cursor:pointer;">
                             <option value="" disabled selected
                                 >Select inquiry type</option
                             >
@@ -219,10 +225,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                         </select>
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Message</label>
+                        <label class="form-label" for="message">Message</label>
                         <textarea
+                            id="message"
                             class="form-textarea"
                             placeholder="Tell me about your project, idea, or whatever's on your mind..."
+                            required
                         ></textarea>
                     </div>
                     <button class="form-submit" id="submit-btn">
@@ -680,23 +688,76 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 </style>
 
-<script is:inline>
+<script>
+    import emailjs from "@emailjs/browser";
+
+    const SERVICE_ID  = import.meta.env.PUBLIC_EMAILJS_SERVICE_ID;
+    const TEMPLATE_ID = import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID;
+    const PUBLIC_KEY  = import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY;
+
+    const SEND_ICON = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>';
+
+    emailjs.init({ publicKey: PUBLIC_KEY });
+
     document.addEventListener("DOMContentLoaded", () => {
-        const btn = document.getElementById("submit-btn");
-        if (btn) {
-            btn.addEventListener("click", () => {
-                btn.textContent = "✓ Message sent — I'll be in touch!";
-                btn.style.background = "#28c840";
-                btn.style.color = "#fff";
-                btn.disabled = true;
+        const btn     = document.getElementById("submit-btn") as HTMLButtonElement;
+        const name    = document.getElementById("name")         as HTMLInputElement;
+        const email   = document.getElementById("email")        as HTMLInputElement;
+        const subject = document.getElementById("subject")      as HTMLInputElement;
+        const type    = document.getElementById("inquiry_type") as HTMLSelectElement;
+        const message = document.getElementById("message")      as HTMLTextAreaElement;
+
+        if (!btn) return;
+
+        btn.addEventListener("click", async () => {
+            if (!name.value.trim() || !email.value.trim() || !subject.value.trim() || !message.value.trim()) {
+                btn.textContent = "⚠ Please fill in all required fields";
+                btn.style.background = "#f59e0b";
                 setTimeout(() => {
-                    btn.innerHTML =
-                        '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg> Send Message';
+                    btn.innerHTML = `${SEND_ICON} Send Message`;
                     btn.style.background = "";
-                    btn.style.color = "";
-                    btn.disabled = false;
-                }, 4000);
-            });
-        }
+                }, 3000);
+                return;
+            }
+
+            btn.innerHTML = "Sending…";
+            btn.disabled  = true;
+
+            try {
+                await emailjs.send(SERVICE_ID, TEMPLATE_ID, {
+                    to_name:      "Siddhesh",
+                    from_name:    name.value.trim(),
+                    from_email:   email.value.trim(),
+                    subject:      subject.value.trim(),
+                    inquiry_type: type.value || "Not specified",
+                    message:      message.value.trim(),
+                });
+
+                btn.innerHTML = "✓ Message sent — I'll be in touch!";
+                btn.style.background = "#28c840";
+                btn.style.color      = "var(--char)";
+
+                name.value = email.value = subject.value = message.value = "";
+                type.selectedIndex = 0;
+
+                setTimeout(() => {
+                    btn.innerHTML        = `${SEND_ICON} Send Message`;
+                    btn.style.background = "";
+                    btn.style.color      = "";
+                    btn.disabled         = false;
+                }, 5000);
+            } catch (err) {
+                console.error("EmailJS error:", err);
+                btn.innerHTML        = "✗ Failed to send — try email directly";
+                btn.style.background = "#ef4444";
+                btn.style.color      = "#fff";
+                btn.disabled         = false;
+                setTimeout(() => {
+                    btn.innerHTML        = `${SEND_ICON} Send Message`;
+                    btn.style.background = "";
+                    btn.style.color      = "";
+                }, 5000);
+            }
+        });
     });
 </script>
