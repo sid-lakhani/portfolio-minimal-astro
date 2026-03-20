@@ -1,4 +1,6 @@
 ---
+import "../styles/global.css";
+
 const { title, description, activePage } = Astro.props as {
   title: string;
   description: string;
@@ -63,7 +65,6 @@ const socialImageUrl = new URL("/wallpaper.jpg", siteUrl).toString();
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImageUrl} />
     <slot name="head" />
-    <link rel="stylesheet" href="/src/styles/global.css" />
     <script defer src="https://analytics.sidlakhani.in/script.js" data-website-id="27ac714c-4691-431d-8eb1-1828743b7be2"></script>
   </head>
   <body>
