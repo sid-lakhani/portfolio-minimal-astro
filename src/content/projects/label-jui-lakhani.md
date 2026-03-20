@@ -9,7 +9,7 @@ cover: projects/labeljuilakhani.png
 live: https://labeljuilakhani.in
 ratio: tall
 description: Luxury fashion brand showcase website built for a client, self-hosted on VPS with Nginx and Strapi CMS.
-order: 7
+order: 4
 ---
 
 Luxury fashion brand website built for a client. Self-hosted on a VPS with Nginx as reverse proxy and Strapi as the CMS so the client can manage content independently.

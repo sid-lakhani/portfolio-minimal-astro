@@ -383,7 +383,12 @@ const categoryMeta = {
     overflow: hidden;
   }
   .cta-card .section-h {
-    margin: 12px 0 8px;
+    margin: 12px auto 16px;
+    max-width: 800px;
+  }
+  .cta-card .section-sub {
+    margin: 0 auto;
+    max-width: 580px;
   }
   .cta-btns {
     margin-top: 36px;
@@ -483,7 +488,7 @@ const categoryMeta = {
     btn.classList.add("active");
     document.querySelectorAll(".masonry-item").forEach((item) => {
       const cats = item.dataset.cat || "";
-      if (cat === "all" || cats.includes(cat)) {
+      if (cat === "all" || cats === cat) {
         item.style.display = "block";
       } else {
         item.style.display = "none";

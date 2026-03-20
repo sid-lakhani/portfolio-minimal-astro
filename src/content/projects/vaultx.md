@@ -3,7 +3,7 @@ title: VaultX
 slug: vaultx
 category: fullstack
 year: 2025
-featured: true
+featured: false
 tags: [FastAPI, Next.js, PostgreSQL, Docker]
 github: https://github.com/sid-lakhani/vaultx
 cover: projects/vaultx.png

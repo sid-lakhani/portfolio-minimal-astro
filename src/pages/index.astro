@@ -101,29 +101,6 @@ const featured = allProjects
         </div>
       </div>
     </div>
-
-    <!-- stats bar pinned to bottom -->
-    <div class="hero-bottom">
-      <div class="hstat">
-        <div class="hstat-num">3<sup>+</sup></div>
-        <div class="hstat-label">Years Experience</div>
-        <div class="hstat-bar"></div>
-      </div>
-      <div class="hstat">
-        <div class="hstat-num">8<sup>+</sup></div>
-        <div class="hstat-label">Projects Shipped</div>
-        <div class="hstat-bar"></div>
-      </div>
-      <div class="hstat">
-        <div class="hstat-num">26</div>
-        <div class="hstat-label">GitHub Repos</div>
-        <div class="hstat-bar"></div>
-      </div>
-      <div class="hstat hstat-vcenter">
-        <div class="hstat-label-mid">Arch btw :p</div>
-        <div class="hstat-bar"></div>
-      </div>
-    </div>
   </section>
 
   <!-- TICKER -->
@@ -185,14 +162,14 @@ const featured = allProjects
     <div class="about-strip-right">
       <div class="about-prose">
         <p>
-          I'm a <strong>Full Stack Engineer</strong> from Mumbai, building production-grade
-          systems with Next.js, Express, PostgreSQL, and Docker. My journey started
-          with JavaScript — now I'm deep in <strong>Linux internals</strong>,
-          K8s in production, and self-hosting everything possible.
+          I'm a <strong>Full Stack Engineer</strong> from Mumbai, building scalable
+          systems with Next.js, Express, PostgreSQL, and Docker. I focus on performance,
+          simplicity, and clean architecture.
         </p>
         <p>
-          I run a custom <strong>DWM setup</strong> on Arch Linux, and believe the
-          best code is the code you control — from the metal up.
+          I work close to the system — exploring <strong>Linux internals</strong
+          >, running a custom <strong>DWM setup</strong> on Arch, and prioritizing
+          control, efficiency, and minimalism across the stack.
         </p>
       </div>
       <div class="mini-terminal">
@@ -245,11 +222,11 @@ const featured = allProjects
                 >
               </div>
               <div class="t-line">
-                <span class="tc">editor</span><span class="tv">: neovim</span
-                >
+                <span class="tc">editor</span><span class="tv">: neovim</span>
               </div>
               <div class="t-line">
-                <span class="tc">location</span><span class="tv">: Mumbai, IN</span
+                <span class="tc">location</span><span class="tv"
+                  >: Mumbai, IN</span
                 >
               </div>
             </div>
@@ -271,7 +248,13 @@ const featured = allProjects
     <div class="work-grid">
       {
         featured.map((project, index) => (
-          <a href="/projects" class={index === 0 ? "wcard featured" : "wcard"}>
+          <a
+            href={project.data.live || project.data.github || "/projects"}
+            target={
+              project.data.live || project.data.github ? "_blank" : undefined
+            }
+            class={index === 0 ? "wcard featured" : "wcard"}
+          >
             <span class="wcard-arrow">↗</span>
             <div class="wcard-num">
               {index === 0 ? "Featured" : String(index + 1).padStart(2, "0")}
@@ -291,41 +274,42 @@ const featured = allProjects
 
   <!-- PROCESS -->
   <div class="process-strip">
-    <div class="section-tag">03 — THE STACK REALITY</div>
-    <h2 class="section-h">How I actually ship.</h2>
+    <div class="section-tag">03 — UNFILTERED</div>
+    <h2 class="section-h">How I actually work.</h2>
     <div class="process-grid">
       <div class="proc-item">
         <div class="proc-step">01</div>
-        <div class="proc-title">Schema before syntax</div>
+        <div class="proc-title">I break things on purpose</div>
         <div class="proc-desc">
-          I design the database first. Every table, every relation, every index
-          — before a single API route exists. Bad schemas are expensive to fix
-          at 2am.
+          I don’t trust systems I haven’t broken myself. If it survives real
+          stress, edge cases, and bad inputs — then it’s ready for production.
         </div>
       </div>
+
       <div class="proc-item">
         <div class="proc-step">02</div>
-        <div class="proc-title">Self-host by default</div>
+        <div class="proc-title">Terminal > UI</div>
         <div class="proc-desc">
-          If it runs on my VPS, I understand it. Nginx, Docker, Postgres,
-          Cloudflare — I don't use managed services I can't SSH into.
+          If there’s a GUI, I’m probably avoiding it. SSH, logs, and configs
+          give me more control than any dashboard ever will.
         </div>
       </div>
+
       <div class="proc-item">
         <div class="proc-step">03</div>
-        <div class="proc-title">Music & Flow</div>
+        <div class="proc-title">Music = throughput</div>
         <div class="proc-desc">
-          I don't just ship code; I ship with a rhythm. Music isn't a distraction — 
-          it's the background process that keeps the flow state constant while 
-          building production systems.
+          Lo-fi, techno, or chaos — depends on the bug. Flow state isn’t
+          optional; it’s something I deliberately maintain while building.
         </div>
       </div>
+
       <div class="proc-item">
         <div class="proc-step">04</div>
-        <div class="proc-title">Ship, then rice</div>
+        <div class="proc-title">Sleep is negotiable</div>
         <div class="proc-desc">
-          Get it working, get it deployed, then obsess over the details. DWM
-          took months of patching. My git history shows the real order.
+          If something’s almost done, I’m not stopping. Momentum matters more
+          than comfort. Shipping always comes first.
         </div>
       </div>
     </div>
@@ -367,8 +351,8 @@ const featured = allProjects
       <div class="curr-item">
         <span class="curr-badge">Open To</span>
         <p class="curr-text">
-          <strong>Freelance & discussions</strong> — interesting problems,
-          people who self-host their own stuff.
+          <strong>Freelance & discussions</strong> — interesting problems, people
+          who self-host their own stuff.
         </p>
       </div>
     </div>
@@ -418,8 +402,9 @@ const featured = allProjects
   /* ── HERO ── */
   .hero {
     min-height: 100vh;
-    display: grid;
-    grid-template-rows: 1fr auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     padding: 0 52px;
     position: relative;
     overflow: hidden;
@@ -605,76 +590,6 @@ const featured = allProjects
   .hero-social-inline {
     display: flex;
     gap: 8px;
-  }
-
-  /* bottom stats bar */
-  .hero-bottom {
-    position: relative;
-    z-index: 2;
-    border-top: 1px solid rgba(255, 59, 59, 0.12);
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    margin-bottom: 0;
-  }
-  .hstat {
-    padding: 22px 28px;
-    border-right: 1px solid rgba(255, 59, 59, 0.1);
-    position: relative;
-    overflow: hidden;
-    transition: background 0.25s;
-  }
-  .hstat:last-child {
-    border-right: none;
-  }
-  .hstat:hover {
-    background: rgba(255, 59, 59, 0.03);
-  }
-  .hstat-num {
-    font-family: "Syne", sans-serif;
-    font-size: 28px;
-    font-weight: 800;
-    color: var(--off);
-    display: flex;
-    align-items: baseline;
-    gap: 2px;
-  }
-  .hstat-num sup {
-    font-size: 14px;
-    color: var(--red);
-    font-weight: 700;
-    margin-left: 2px;
-  }
-  .hstat-label {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-top: 3px;
-  }
-  .hstat-label-mid {
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--off);
-  }
-  .hstat-vcenter {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .hstat-bar {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 2px;
-    background: var(--red);
-    width: 0;
-    transition: width 0.4s ease;
-  }
-  .hstat:hover .hstat-bar {
-    width: 100%;
   }
 
   /* ── TICKER ── */
