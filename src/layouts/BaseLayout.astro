@@ -16,7 +16,7 @@ const pagePathMap = {
 };
 const canonicalPath = pagePathMap[activePage ?? "home"];
 const canonicalUrl = new URL(canonicalPath, siteUrl).toString();
-const socialImageUrl = new URL("/wallpaper.jpg", siteUrl).toString();
+const socialImageUrl = new URL("/og.png", siteUrl).toString();
 ---
 
 <!doctype html>
