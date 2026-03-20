@@ -26,6 +26,7 @@ html {
 }
 
 body {
+  background-color: var(--char);
   color: var(--off);
   font-family: 'Space Grotesk', sans-serif;
   overflow-x: hidden;
