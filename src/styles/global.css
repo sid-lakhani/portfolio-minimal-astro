@@ -26,11 +26,6 @@ html {
 }
 
 body {
-  background-image: url('/wallpaper.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
   color: var(--off);
   font-family: 'Space Grotesk', sans-serif;
   overflow-x: hidden;
@@ -41,8 +36,20 @@ body::before {
   content: '';
   position: fixed;
   inset: 0;
+  background-image: url('/wallpaper.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -2;
+  pointer-events: none;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
   background: rgba(17, 19, 26, 0.82);
-  z-index: 0;
+  z-index: -1;
   pointer-events: none;
 }
 
@@ -427,7 +434,7 @@ footer {
   right: -100%;
   width: 85%;
   max-width: 400px;
-  height: 100vh;
+  height: 100dvh;
   background: rgba(26, 29, 39, 0.95);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
@@ -436,6 +443,7 @@ footer {
   display: flex;
   flex-direction: column;
   padding: 40px;
+  overflow-y: auto;
   transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
