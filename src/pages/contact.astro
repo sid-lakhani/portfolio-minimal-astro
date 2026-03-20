@@ -173,9 +173,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
             <!-- RIGHT — FORM -->
             <div class="contact-form-wrap">
-                <div
-                    style="background:var(--char2);border:1px solid var(--border);border-radius:12px;padding:36px;"
-                >
+                <div class="form-card">
                     <div class="section-tag" style="margin-bottom:20px;">
                         Send a Message
                     </div>
@@ -211,18 +209,21 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                             required
                         />
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="position: relative;">
                         <label class="form-label" for="inquiry_type">Type</label>
-                        <select id="inquiry_type" class="form-input" style="cursor:pointer;">
-                            <option value="" disabled selected
-                                >Select inquiry type</option
-                            >
-                            <option>Freelance Project</option>
-                            <option>Collaboration</option>
-                            <option>Technical Discussion</option>
-                            <option>Just Saying Hi</option>
-                            <option>Other</option>
-                        </select>
+                        <div class="custom-select-wrapper">
+                            <select id="inquiry_type" class="form-input custom-select" style="cursor:pointer;">
+                                <option value="" disabled selected
+                                    >Select inquiry type</option
+                                >
+                                <option>Freelance Project</option>
+                                <option>Collaboration</option>
+                                <option>Technical Discussion</option>
+                                <option>Just Saying Hi</option>
+                                <option>Other</option>
+                            </select>
+                            <svg class="custom-select-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="message">Message</label>
@@ -624,6 +625,30 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         line-height: 1.5;
     }
 
+    /* FORM CARD */
+    .form-card {
+        background: var(--char2);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 36px;
+    }
+    .custom-select-wrapper {
+        position: relative;
+    }
+    .custom-select {
+        appearance: none;
+        -webkit-appearance: none;
+        padding-right: 48px;
+    }
+    .custom-select-icon {
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        color: var(--muted);
+    }
+
     /* OPEN TO section */
     .open-to {
         padding: 0 52px 96px;
@@ -667,6 +692,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             padding-left: 20px;
             padding-right: 20px;
         }
+        .contact-hero {
+            padding-top: 80px;
+            padding-bottom: 40px;
+        }
         .contact-layout {
             grid-template-columns: 1fr;
             gap: 40px;
@@ -677,13 +706,21 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         .form-row {
             grid-template-columns: 1fr;
         }
+        .form-card {
+            padding: 24px 20px;
+        }
     }
     @media (max-width: 500px) {
         .open-to-grid {
             grid-template-columns: 1fr;
         }
         .social-big {
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 6px;
+        }
+        .social-big-btn {
+            padding: 14px 8px;
+            font-size: 10px;
         }
     }
 </style>

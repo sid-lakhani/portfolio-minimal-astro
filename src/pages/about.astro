@@ -623,6 +623,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       padding-left: 20px;
       padding-right: 20px;
     }
+    .about-hero {
+      padding-top: 80px;
+      padding-bottom: 40px;
+    }
     .bio-section {
       grid-template-columns: 1fr;
     }
@@ -635,6 +639,45 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     .beyond-section {
       padding-left: 20px;
       padding-right: 20px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .section-h {
+      font-size: 32px !important;
+      line-height: 1.1 !important;
+    }
+    .cta-block h2 {
+      font-size: 32px !important;
+      line-height: 1.1 !important;
+    }
+    .bio-text .bio-ctas {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .bio-text .bio-ctas .btn-primary,
+    .bio-text .bio-ctas .btn-outline {
+      padding: 12px 8px;
+      font-size: 11px;
+      justify-content: center;
+      text-align: center;
+      width: 100%;
+      white-space: nowrap;
+    }
+    .cta-block .btns {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+    }
+    .cta-block .btns .btn-primary,
+    .cta-block .btns .btn-outline {
+      padding: 10px 6px;
+      font-size: 10px;
+      justify-content: center;
+      text-align: center;
+      width: 100%;
+      white-space: nowrap;
     }
   }
 </style>
